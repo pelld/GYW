@@ -76,3 +76,20 @@
     box-shadow: 0 12px 30px rgba(42, 28, 18, .09);
   }
 }
+
+/* 90D — SEAM 1 HD CUTAWAY ------------------------------------------------- */
+.inseam-illustration {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: 697 / 422 !important;
+  overflow: hidden !important;
+  border-radius: 18px !important;
+  background: #eee3d4 url("assets/hd/inseam-hd.webp?v=20260815-2027") center / cover no-repeat !important;
+}
+
+.inseam-illustration > img {
+  display: none !important;
+}
