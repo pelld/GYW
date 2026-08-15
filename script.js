@@ -12,63 +12,26 @@ siteNav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', 
   navToggle?.setAttribute('aria-expanded', 'false');
 }));
 
-// 20B — INTERACTIVE PHOTOGRAPHIC ANATOMY ----------------------------------
+// 20B — STATIC LABELLED ANATOMY -------------------------------------------
 const anatomyStage = document.querySelector('#anatomy-stage');
-const partButtons = [...document.querySelectorAll('.part-button')];
-const anatomyParts = ['upper', 'insole', 'gemming', 'welt', 'filler', 'shank', 'outsole', 'heel'];
-const anatomyAssetVersion = '20260815-1859';
+const anatomyControls = document.querySelector('.anatomy-controls');
 
 if (anatomyStage) {
-  anatomyStage.querySelectorAll('.anatomy-photo-base, .anatomy-photo-overlay, .photo-layer, .anatomy-current-label').forEach((node) => node.remove());
+  anatomyStage.innerHTML = '';
 
-  anatomyParts.forEach((part) => {
-    const layerImage = document.createElement('img');
-    layerImage.className = `anatomy-photo-overlay anatomy-photo-overlay--${part}`;
-    layerImage.dataset.part = part;
-    layerImage.src = `assets/parts-v2/${part}.webp?v=${anatomyAssetVersion}`;
-    layerImage.alt = part === 'upper' ? 'Upper component of a Goodyear welt shoe' : '';
-    layerImage.decoding = 'async';
-    layerImage.loading = 'eager';
-    layerImage.setAttribute('aria-hidden', part === 'upper' ? 'false' : 'true');
-    anatomyStage.appendChild(layerImage);
-  });
+  const anatomyImage = document.createElement('img');
+  anatomyImage.className = 'anatomy-static-image';
+  anatomyImage.src = 'assets/labelled-anatomy.svg?v=20260815-1948';
+  anatomyImage.alt = 'Exploded Goodyear welt shoe labelled with upper, insole, gemming or rib, welt, filler or cork, shank, outsole and heel';
+  anatomyImage.decoding = 'async';
+  anatomyImage.loading = 'eager';
 
-  const label = document.createElement('div');
-  label.className = 'anatomy-current-label';
-  label.textContent = 'Whole system';
-  anatomyStage.appendChild(label);
+  anatomyStage.appendChild(anatomyImage);
 }
 
-const anatomyPhotoLayers = [...document.querySelectorAll('#anatomy-stage .anatomy-photo-overlay')];
-const anatomyLabel = document.querySelector('#anatomy-stage .anatomy-current-label');
-
-function showPart(part) {
-  const showAll = part === 'all';
-
-  partButtons.forEach((button) => {
-    button.classList.toggle('active', button.dataset.part === part);
-  });
-
-  anatomyStage?.classList.toggle('is-filtered', !showAll);
-
-  anatomyPhotoLayers.forEach((layer) => {
-    const active = !showAll && layer.dataset.part === part;
-    layer.classList.toggle('is-active', active);
-    layer.setAttribute('aria-hidden', showAll || active ? 'false' : 'true');
-    layer.alt = active ? `${part} component of a Goodyear welt shoe` : '';
-  });
-
-  if (anatomyLabel) {
-    const activeButton = partButtons.find((button) => button.dataset.part === part);
-    anatomyLabel.textContent = activeButton?.querySelector('strong')?.textContent || 'Whole system';
-  }
+if (anatomyControls) {
+  anatomyControls.remove();
 }
-
-partButtons.forEach((button) => {
-  button.addEventListener('click', () => showPart(button.dataset.part));
-});
-
-showPart('all');
 
 // 20C — PROCESS SCROLL PROGRESS -------------------------------------------
 const processShell = document.querySelector('.process-shell');
