@@ -1,0 +1,125 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 1200" role="img" aria-labelledby="title desc">
+  <title id="title">Exploded anatomy of a Goodyear welted shoe</title>
+  <desc id="desc">A labelled exploded side view showing upper, insole, gemming or rib, welt, cork filler, shank, outsole and heel.</desc>
+
+  <!-- 00A — DEFINITIONS -------------------------------------------------- -->
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#fffaf2"/>
+      <stop offset="1" stop-color="#efe3d2"/>
+    </linearGradient>
+    <linearGradient id="leather" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#3e2115"/>
+      <stop offset="0.28" stop-color="#7a3e25"/>
+      <stop offset="0.58" stop-color="#9f5a35"/>
+      <stop offset="1" stop-color="#4d281a"/>
+    </linearGradient>
+    <linearGradient id="tanLeather" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#b87543"/>
+      <stop offset="0.52" stop-color="#d49a62"/>
+      <stop offset="1" stop-color="#9e6038"/>
+    </linearGradient>
+    <linearGradient id="soleLeather" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#5b2e1e"/>
+      <stop offset="0.5" stop-color="#8f4d2f"/>
+      <stop offset="1" stop-color="#4f281a"/>
+    </linearGradient>
+    <linearGradient id="canvas" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eee3d0"/>
+      <stop offset="1" stop-color="#cfc0a8"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#28292c"/>
+      <stop offset="0.48" stop-color="#5a5b60"/>
+      <stop offset="1" stop-color="#222326"/>
+    </linearGradient>
+    <pattern id="cork" width="18" height="18" patternUnits="userSpaceOnUse">
+      <rect width="18" height="18" fill="#b97d45"/>
+      <circle cx="3" cy="5" r="2.2" fill="#7d4d2d" opacity=".6"/>
+      <circle cx="13" cy="4" r="1.6" fill="#d8aa74" opacity=".85"/>
+      <circle cx="8" cy="13" r="2" fill="#8f5933" opacity=".65"/>
+      <circle cx="16" cy="15" r="1.3" fill="#e0b37d" opacity=".8"/>
+    </pattern>
+    <filter id="shadow" x="-20%" y="-30%" width="140%" height="170%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#2b1a11" flood-opacity=".18"/>
+    </filter>
+    <filter id="grain" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency=".72" numOctaves="2" seed="4" result="noise"/>
+      <feComposite in="noise" in2="SourceGraphic" operator="in" result="texture"/>
+      <feBlend in="SourceGraphic" in2="texture" mode="soft-light"/>
+    </filter>
+    <style>
+      .label { font-family: Georgia, 'Times New Roman', serif; font-size: 31px; fill: #2f2018; }
+      .callout { stroke: #4c3427; stroke-width: 2.2; fill: none; }
+      .dot { fill: #4c3427; }
+      .edge { stroke: #2b190f; stroke-width: 4; }
+      .stitch { stroke: #ead5aa; stroke-width: 4; stroke-linecap: round; stroke-dasharray: 7 8; fill: none; }
+    </style>
+  </defs>
+
+  <!-- 01A — BACKGROUND --------------------------------------------------- -->
+  <rect x="10" y="10" width="1180" height="1180" rx="42" fill="url(#bg)"/>
+  <rect x="34" y="34" width="1132" height="1132" rx="30" fill="none" stroke="#d9c8b4" stroke-width="2"/>
+
+  <!-- 02A — UPPER -------------------------------------------------------- -->
+  <g filter="url(#shadow)">
+    <path d="M92 267 C108 203 166 156 255 132 C360 104 489 105 603 127 C694 145 772 178 837 226 C876 255 896 285 904 315 C871 333 823 341 755 344 L236 344 C181 344 136 331 108 307 C95 296 89 282 92 267Z" fill="url(#leather)" class="edge" filter="url(#grain)"/>
+    <path d="M258 134 C285 172 310 211 315 263 C401 249 487 251 577 271 C625 282 675 292 724 288 C757 286 783 277 799 263" fill="none" stroke="#c9885d" stroke-width="4" opacity=".7"/>
+    <path d="M626 170 C670 183 711 202 748 228" fill="none" stroke="#d69b72" stroke-width="3" opacity=".65"/>
+    <path d="M695 191 L730 258 M715 202 L747 264 M735 215 L763 268" stroke="#25140e" stroke-width="6" stroke-linecap="round"/>
+    <path d="M689 192 L724 259 M709 203 L741 265 M729 216 L757 269" stroke="#756057" stroke-width="2" stroke-linecap="round" opacity=".8"/>
+  </g>
+
+  <!-- 03A — INSOLE ------------------------------------------------------- -->
+  <g filter="url(#shadow)">
+    <path d="M115 407 C236 388 390 380 552 382 C690 384 789 394 856 411 C836 438 789 452 715 455 L235 455 C175 452 133 438 115 407Z" fill="url(#tanLeather)" class="edge"/>
+    <path d="M167 418 C315 402 508 400 758 418" fill="none" stroke="#e7bd8f" stroke-width="3" opacity=".7"/>
+  </g>
+
+  <!-- 04A — GEMMING / RIB ---------------------------------------------- -->
+  <g filter="url(#shadow)">
+    <path d="M139 500 C270 487 407 481 547 482 C672 482 768 489 830 503 C812 525 766 537 690 540 L253 540 C200 538 162 526 139 500Z" fill="url(#canvas)" stroke="#746b61" stroke-width="3"/>
+    <path d="M158 504 C270 495 400 492 540 492 C670 492 759 498 808 506" fill="none" stroke="#b6a891" stroke-width="2" stroke-dasharray="3 5"/>
+  </g>
+
+  <!-- 05A — WELT --------------------------------------------------------- -->
+  <g filter="url(#shadow)">
+    <path d="M110 590 C232 603 371 608 527 608 C665 607 775 600 855 586 L861 616 C773 635 657 644 521 644 C365 644 224 636 103 620Z" fill="url(#soleLeather)" class="edge"/>
+    <path d="M125 603 C244 614 379 619 527 619 C661 618 767 611 840 599" class="stitch"/>
+  </g>
+
+  <!-- 06A — FILLER / CORK ---------------------------------------------- -->
+  <g filter="url(#shadow)">
+    <path d="M178 687 C286 697 403 702 523 702 C634 701 722 696 787 685 L776 730 C701 741 613 747 515 747 C397 747 292 740 190 727Z" fill="url(#cork)" stroke="#6f4529" stroke-width="3"/>
+  </g>
+
+  <!-- 07A — SHANK -------------------------------------------------------- -->
+  <g filter="url(#shadow)">
+    <path d="M302 797 C364 786 429 781 497 781 C555 781 604 786 648 797 C619 828 586 846 548 853 C479 866 406 861 338 842 C320 837 307 822 302 797Z" fill="url(#metal)" stroke="#17181a" stroke-width="3"/>
+  </g>
+
+  <!-- 08A — OUTSOLE ------------------------------------------------------ -->
+  <g filter="url(#shadow)">
+    <path d="M112 910 C238 928 382 936 538 935 C678 934 786 924 862 905 L871 941 C786 965 670 977 526 978 C367 978 224 968 101 946Z" fill="url(#soleLeather)" class="edge"/>
+    <path d="M128 925 C246 938 382 945 533 944 C669 943 775 934 849 916" class="stitch"/>
+  </g>
+
+  <!-- 09A — HEEL --------------------------------------------------------- -->
+  <g filter="url(#shadow)">
+    <path d="M145 984 L318 984 L318 1114 L158 1114 C148 1070 144 1027 145 984Z" fill="#412217" stroke="#24140e" stroke-width="4"/>
+    <path d="M148 1008 L317 1008 M151 1034 L317 1034 M154 1060 L317 1060 M156 1086 L317 1086" stroke="#a86c45" stroke-width="5" opacity=".9"/>
+    <path d="M158 1114 L318 1114 L318 1144 L164 1144Z" fill="#202124" stroke="#111" stroke-width="3"/>
+  </g>
+
+  <!-- 10A — LABELS ------------------------------------------------------- -->
+  <g>
+    <path class="callout" d="M886 270 H1018"/><circle class="dot" cx="886" cy="270" r="5"/><text class="label" x="1032" y="279">Upper</text>
+    <path class="callout" d="M858 420 H1018"/><circle class="dot" cx="858" cy="420" r="5"/><text class="label" x="1032" y="429">Insole</text>
+    <path class="callout" d="M831 509 H1018"/><circle class="dot" cx="831" cy="509" r="5"/><text class="label" x="1032" y="518">Gemming / rib</text>
+    <path class="callout" d="M860 609 H1018"/><circle class="dot" cx="860" cy="609" r="5"/><text class="label" x="1032" y="618">Welt</text>
+    <path class="callout" d="M786 711 H1018"/><circle class="dot" cx="786" cy="711" r="5"/><text class="label" x="1032" y="720">Filler / cork</text>
+    <path class="callout" d="M648 818 H1018"/><circle class="dot" cx="648" cy="818" r="5"/><text class="label" x="1032" y="827">Shank</text>
+    <path class="callout" d="M866 936 H1018"/><circle class="dot" cx="866" cy="936" r="5"/><text class="label" x="1032" y="945">Outsole</text>
+    <path class="callout" d="M320 1068 H1018"/><circle class="dot" cx="320" cy="1068" r="5"/><text class="label" x="1032" y="1077">Heel</text>
+  </g>
+</svg>
