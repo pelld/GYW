@@ -1,108 +1,79 @@
-/* 80A — HIGHER-QUALITY EIGHT-IMAGE ANATOMY ------------------------------- */
+/* 70A — TWO COMPONENT TEST VIEW ------------------------------------------- */
 #anatomy .anatomy-stage {
   position: relative;
   min-height: 0;
-  aspect-ratio: 1 / 1.18;
+  aspect-ratio: 1 / 1.02;
   padding: 0;
   overflow: hidden;
   isolation: isolate;
-  background:
-    radial-gradient(circle at 50% 42%, rgba(255,255,255,.94), rgba(255,255,255,0) 64%),
-    linear-gradient(145deg, #eee5d8 0%, #fbf7ef 58%, #eadcca 100%);
+  background: radial-gradient(circle at 50% 42%, rgba(255,255,255,.9), rgba(255,255,255,0) 62%), linear-gradient(145deg, #eee5d8 0%, #fbf7ef 58%, #eadcca 100%);
   border: 1px solid rgba(95,65,44,.22);
   border-radius: 22px;
   box-shadow: 0 18px 42px rgba(42,28,18,.12);
 }
 
 #anatomy .anatomy-stage::before {
-  content: "EXPLODED CONSTRUCTION";
+  content: "UPPER + INSOLE POSITION TEST";
   position: absolute;
   top: 14px;
   left: 14px;
   z-index: 20;
-  padding: 6px 10px;
+  padding: 5px 8px;
   color: #5f4a39;
-  background: rgba(255,250,243,.94);
+  background: rgba(255,250,243,.92);
   border: 1px solid rgba(81,56,38,.14);
   border-radius: 999px;
   font-size: .56rem;
   font-weight: 850;
   letter-spacing: .12em;
-  box-shadow: 0 4px 14px rgba(42,28,18,.06);
 }
 
 #anatomy .anatomy-stage::after { content: none !important; display: none !important; }
-
-/* 80B — USE REAL IMG SOURCES, NEVER CSS content:url() --------------------- */
 #anatomy .anatomy-photo-base { display: none !important; }
 
 #anatomy .anatomy-photo-overlay {
   position: absolute;
   z-index: 3;
   display: block;
-  width: auto;
   height: auto;
   max-width: none;
-  max-height: none;
   margin: 0 !important;
   opacity: 1;
   object-fit: contain;
-  image-rendering: auto;
-  backface-visibility: hidden;
-  transform: translateZ(0);
-  filter: drop-shadow(0 5px 8px rgba(47,29,18,.11));
-  transition: opacity .16s ease, left .2s ease, top .2s ease, width .2s ease, height .2s ease, filter .16s ease;
+  filter: drop-shadow(0 5px 7px rgba(47,29,18,.11));
+  transition: opacity .18s ease, width .22s ease, left .22s ease, top .22s ease, transform .22s ease, filter .18s ease;
   pointer-events: none;
 }
 
-/* 80C — WHOLE SYSTEM: GIVE EVERY IMAGE A REAL ROW ------------------------- */
+#anatomy .anatomy-photo-overlay--upper  { content: url("assets/parts-v2/upper.webp?v=20260815-1918"); }
+#anatomy .anatomy-photo-overlay--insole { content: url("assets/parts-v2/insole.webp?v=20260815-1918"); }
+
+/* 70B — WHOLE SYSTEM: JUST UPPER + INSOLE --------------------------------- */
 #anatomy .anatomy-stage:not(.is-filtered) .anatomy-photo-overlay--upper {
-  left: 4%; top: 5%; width: 92%; height: 22%; object-fit: contain;
+  width: 90%; left: 5%; top: 9%; transform: none; opacity: 1;
 }
 #anatomy .anatomy-stage:not(.is-filtered) .anatomy-photo-overlay--insole {
-  left: 5%; top: 25%; width: 90%; height: 11%; object-fit: contain;
-}
-#anatomy .anatomy-stage:not(.is-filtered) .anatomy-photo-overlay--gemming {
-  left: 6%; top: 35%; width: 88%; height: 10%; object-fit: contain;
-}
-#anatomy .anatomy-stage:not(.is-filtered) .anatomy-photo-overlay--welt {
-  left: 5%; top: 44%; width: 90%; height: 10%; object-fit: contain;
-}
-#anatomy .anatomy-stage:not(.is-filtered) .anatomy-photo-overlay--filler {
-  left: 6%; top: 53%; width: 88%; height: 11%; object-fit: contain;
-}
-#anatomy .anatomy-stage:not(.is-filtered) .anatomy-photo-overlay--shank {
-  left: 24%; top: 64%; width: 56%; height: 10%; object-fit: contain;
-}
-#anatomy .anatomy-stage:not(.is-filtered) .anatomy-photo-overlay--outsole {
-  left: 5%; top: 73%; width: 90%; height: 12%; object-fit: contain;
-}
-#anatomy .anatomy-stage:not(.is-filtered) .anatomy-photo-overlay--heel {
-  left: 7%; top: 82%; width: 34%; height: 14%; object-fit: contain;
+  width: 86%; left: 7%; top: 50%; transform: none; opacity: 1;
 }
 
-/* 80D — INDIVIDUAL MODE: THE SELECTED IMAGE FILLS THE CARD ---------------- */
+/* 70C — INDIVIDUAL MODE --------------------------------------------------- */
 #anatomy .anatomy-stage.is-filtered .anatomy-photo-overlay {
-  opacity: 0;
-  left: 3%;
-  top: 10%;
-  width: 94%;
-  height: 80%;
-  object-fit: contain;
-  filter: drop-shadow(0 16px 24px rgba(47,29,18,.17));
+  opacity: .14;
+  filter: grayscale(.1) brightness(.98);
 }
-
 #anatomy .anatomy-stage.is-filtered .anatomy-photo-overlay.is-active {
   opacity: 1;
   z-index: 8;
+  filter: drop-shadow(0 12px 18px rgba(47,29,18,.16));
+}
+#anatomy .anatomy-stage.is-filtered .anatomy-photo-overlay--upper {
+  width: 90%; left: 5%; top: 9%; transform: none;
+}
+#anatomy .anatomy-stage.is-filtered .anatomy-photo-overlay--insole {
+  width: 86%; left: 7%; top: 50%; transform: none;
 }
 
-#anatomy .anatomy-stage.is-filtered .anatomy-photo-overlay--heel.is-active {
-  left: 10%;
-  width: 80%;
-}
-
-/* 80E — REMOVE ALL EARLIER ANATOMY EXPERIMENTS --------------------------- */
+/* 70D — REMOVE EARLIER ANATOMY EXPERIMENTS ------------------------------- */
 #anatomy .anatomy-stage > svg,
 #anatomy .photo-layer,
 #anatomy .photo-focus,
@@ -117,9 +88,9 @@
   left: 12px;
   bottom: 12px;
   z-index: 21;
-  padding: 8px 12px;
+  padding: 7px 11px;
   color: #513923;
-  background: rgba(255,250,243,.96);
+  background: rgba(255,250,243,.95);
   border: 1px solid rgba(81,56,38,.14);
   border-radius: 999px;
   font-size: .72rem;
@@ -128,39 +99,14 @@
 }
 
 #anatomy .anatomy-stage:not(.is-filtered) .anatomy-current-label::after {
-  content: " · all 8 images";
+  content: " · 2 images";
   font-weight: 600;
   color: #806d5f;
 }
 
-/* 80F — MOBILE: MORE VERTICAL ROOM + LARGE INDIVIDUAL PART ---------------- */
+/* 70E — MOBILE ------------------------------------------------------------ */
 @media (max-width: 760px) {
-  #anatomy .anatomy-stage {
-    aspect-ratio: 1 / 1.16;
-    border-radius: 18px;
-  }
-
-  #anatomy .anatomy-stage::before {
-    top: 10px;
-    left: 10px;
-    font-size: .49rem;
-  }
-
-  #anatomy .anatomy-current-label {
-    left: 9px;
-    bottom: 9px;
-    font-size: .67rem;
-  }
-
-  #anatomy .anatomy-stage.is-filtered .anatomy-photo-overlay {
-    left: 2%;
-    top: 8%;
-    width: 96%;
-    height: 84%;
-  }
-
-  #anatomy .anatomy-stage.is-filtered .anatomy-photo-overlay--heel.is-active {
-    left: 8%;
-    width: 84%;
-  }
+  #anatomy .anatomy-stage { aspect-ratio: 1 / 1.02; border-radius: 18px; }
+  #anatomy .anatomy-stage::before { top: 10px; left: 10px; font-size: .49rem; }
+  #anatomy .anatomy-current-label { left: 9px; bottom: 9px; font-size: .66rem; }
 }
