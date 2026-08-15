@@ -1,128 +1,79 @@
-/* 70A — TWO COMPONENT TEST VIEW ------------------------------------------- */
+/* 90A — STATIC LABELLED ANATOMY ------------------------------------------- */
+#anatomy .section-heading .eyebrow {
+  font-size: 0;
+}
+
+#anatomy .section-heading .eyebrow::after {
+  content: "Anatomy";
+  font-size: .72rem;
+}
+
+#anatomy .section-heading p:last-child {
+  max-width: 680px;
+  font-size: 0 !important;
+}
+
+#anatomy .section-heading p:last-child::after {
+  content: "All of the major components are shown together in one labelled exploded view.";
+  display: block;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
+/* 90B — ONE IMAGE, NO LAYER CONTROLS -------------------------------------- */
+#anatomy .anatomy-grid {
+  display: block;
+  max-width: 900px;
+  margin-inline: auto;
+}
+
 #anatomy .anatomy-stage {
   position: relative;
+  width: 100%;
   min-height: 0;
-  aspect-ratio: 1 / 1.02;
+  aspect-ratio: 1 / 1;
   padding: 0;
   overflow: hidden;
-  isolation: isolate;
-  background: radial-gradient(circle at 50% 42%, rgba(255,255,255,.9), rgba(255,255,255,0) 62%), linear-gradient(145deg, #eee5d8 0%, #fbf7ef 58%, #eadcca 100%);
-  border: 1px solid rgba(95,65,44,.22);
+  background-color: #fbf7ef;
+  background-image: url("assets/labelled-anatomy.webp?v=20260815-1928") !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  background-size: contain !important;
+  border: 1px solid rgba(95, 65, 44, .18);
   border-radius: 22px;
-  box-shadow: 0 18px 42px rgba(42,28,18,.12);
+  box-shadow: 0 18px 42px rgba(42, 28, 18, .11);
 }
 
-#anatomy .anatomy-stage::before {
-  content: "UPPER + INSOLE POSITION TEST";
-  position: absolute;
-  top: 14px;
-  left: 14px;
-  z-index: 20;
-  padding: 5px 8px;
-  color: #5f4a39;
-  background: rgba(255,250,243,.92);
-  border: 1px solid rgba(81,56,38,.14);
-  border-radius: 999px;
-  font-size: .56rem;
-  font-weight: 850;
-  letter-spacing: .12em;
-}
-
-#anatomy .anatomy-stage::after { content: none !important; display: none !important; }
-#anatomy .anatomy-photo-base { display: none !important; }
-
-#anatomy .anatomy-photo-overlay {
-  position: absolute;
-  z-index: 3;
-  display: block;
-  height: auto;
-  max-width: none;
-  margin: 0 !important;
-  opacity: 1;
-  object-fit: contain;
-  filter: drop-shadow(0 5px 7px rgba(47,29,18,.11));
-  transition: opacity .18s ease, width .22s ease, left .22s ease, top .22s ease, transform .22s ease, filter .18s ease;
-  pointer-events: none;
-}
-
-/* 70B — ONLY UPPER + INSOLE FOR POSITIONING ------------------------------- */
-#anatomy .anatomy-photo-overlay--gemming,
-#anatomy .anatomy-photo-overlay--welt,
-#anatomy .anatomy-photo-overlay--filler,
-#anatomy .anatomy-photo-overlay--shank,
-#anatomy .anatomy-photo-overlay--outsole,
-#anatomy .anatomy-photo-overlay--heel,
-#anatomy .part-button[data-part="gemming"],
-#anatomy .part-button[data-part="welt"],
-#anatomy .part-button[data-part="filler"],
-#anatomy .part-button[data-part="shank"],
-#anatomy .part-button[data-part="outsole"],
-#anatomy .part-button[data-part="heel"] {
+#anatomy .anatomy-stage::before,
+#anatomy .anatomy-stage::after {
+  content: none !important;
   display: none !important;
 }
 
-#anatomy .anatomy-photo-overlay--upper  { content: url("assets/parts-v2/upper.webp?v=20260815-1918"); }
-#anatomy .anatomy-photo-overlay--insole { content: url("assets/parts-v2/insole.webp?v=20260815-1918"); }
-
-/* 70C — WHOLE SYSTEM: JUST UPPER + INSOLE --------------------------------- */
-#anatomy .anatomy-stage:not(.is-filtered) .anatomy-photo-overlay--upper {
-  width: 90%; left: 5%; top: 9%; transform: none; opacity: 1;
-}
-#anatomy .anatomy-stage:not(.is-filtered) .anatomy-photo-overlay--insole {
-  width: 86%; left: 7%; top: 50%; transform: none; opacity: 1;
-}
-
-/* 70D — INDIVIDUAL MODE --------------------------------------------------- */
-#anatomy .anatomy-stage.is-filtered .anatomy-photo-overlay {
-  opacity: .14;
-  filter: grayscale(.1) brightness(.98);
-}
-#anatomy .anatomy-stage.is-filtered .anatomy-photo-overlay.is-active {
-  opacity: 1;
-  z-index: 8;
-  filter: drop-shadow(0 12px 18px rgba(47,29,18,.16));
-}
-#anatomy .anatomy-stage.is-filtered .anatomy-photo-overlay--upper {
-  width: 90%; left: 5%; top: 9%; transform: none;
-}
-#anatomy .anatomy-stage.is-filtered .anatomy-photo-overlay--insole {
-  width: 86%; left: 7%; top: 50%; transform: none;
-}
-
-/* 70E — REMOVE EARLIER ANATOMY EXPERIMENTS ------------------------------- */
+#anatomy .anatomy-controls,
 #anatomy .anatomy-stage > svg,
+#anatomy .anatomy-hint,
+#anatomy .anatomy-photo-base,
+#anatomy .anatomy-photo-overlay,
 #anatomy .photo-layer,
 #anatomy .photo-focus,
 #anatomy .focus-overlay,
 #anatomy .selection-overlay,
 #anatomy .spotlight,
 #anatomy .spotlight-mask,
-#anatomy .anatomy-hint { display: none !important; }
-
 #anatomy .anatomy-current-label {
-  position: absolute;
-  left: 12px;
-  bottom: 12px;
-  z-index: 21;
-  padding: 7px 11px;
-  color: #513923;
-  background: rgba(255,250,243,.95);
-  border: 1px solid rgba(81,56,38,.14);
-  border-radius: 999px;
-  font-size: .72rem;
-  font-weight: 800;
-  box-shadow: 0 5px 14px rgba(42,28,18,.08);
+  display: none !important;
 }
 
-#anatomy .anatomy-stage:not(.is-filtered) .anatomy-current-label::after {
-  content: " · 2 images";
-  font-weight: 600;
-  color: #806d5f;
-}
-
-/* 70F — MOBILE ------------------------------------------------------------ */
+/* 90C — MOBILE ------------------------------------------------------------ */
 @media (max-width: 760px) {
-  #anatomy .anatomy-stage { aspect-ratio: 1 / 1.02; border-radius: 18px; }
-  #anatomy .anatomy-stage::before { top: 10px; left: 10px; font-size: .49rem; }
-  #anatomy .anatomy-current-label { left: 9px; bottom: 9px; font-size: .66rem; }
+  #anatomy .section-heading p:last-child::after {
+    font-size: .92rem;
+  }
+
+  #anatomy .anatomy-stage {
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(42, 28, 18, .09);
+  }
 }
