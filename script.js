@@ -16,35 +16,20 @@ siteNav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', 
 const anatomyStage = document.querySelector('#anatomy-stage');
 const partButtons = [...document.querySelectorAll('.part-button')];
 const anatomyParts = ['upper', 'insole', 'gemming', 'welt', 'filler', 'shank', 'outsole', 'heel'];
-const anatomyPrimaryImage = 'assets/gyw-anatomy.webp?v=20260815-1750';
-const anatomyFallbackImage = 'assets/layers/whole-system.webp?v=20260815-1750';
-
-function setAnatomyImageSource(image) {
-  image.onerror = () => {
-    image.onerror = null;
-    image.src = anatomyFallbackImage;
-  };
-  image.src = anatomyPrimaryImage;
-}
+const anatomyAssetVersion = '20260815-1859';
 
 if (anatomyStage) {
   anatomyStage.querySelectorAll('.anatomy-photo-base, .anatomy-photo-overlay, .photo-layer, .anatomy-current-label').forEach((node) => node.remove());
-
-  const baseImage = document.createElement('img');
-  baseImage.className = 'anatomy-photo-base';
-  baseImage.alt = 'Exploded Goodyear welt shoe showing the upper, insole, gemming, welt, filler, shank, outsole and heel';
-  baseImage.decoding = 'async';
-  setAnatomyImageSource(baseImage);
-  anatomyStage.appendChild(baseImage);
 
   anatomyParts.forEach((part) => {
     const layerImage = document.createElement('img');
     layerImage.className = `anatomy-photo-overlay anatomy-photo-overlay--${part}`;
     layerImage.dataset.part = part;
-    layerImage.alt = '';
+    layerImage.src = `assets/parts-v2/${part}.webp?v=${anatomyAssetVersion}`;
+    layerImage.alt = part === 'upper' ? 'Upper component of a Goodyear welt shoe' : '';
     layerImage.decoding = 'async';
-    layerImage.setAttribute('aria-hidden', 'true');
-    setAnatomyImageSource(layerImage);
+    layerImage.loading = 'eager';
+    layerImage.setAttribute('aria-hidden', part === 'upper' ? 'false' : 'true');
     anatomyStage.appendChild(layerImage);
   });
 
@@ -54,7 +39,6 @@ if (anatomyStage) {
   anatomyStage.appendChild(label);
 }
 
-const anatomyBaseImage = document.querySelector('#anatomy-stage .anatomy-photo-base');
 const anatomyPhotoLayers = [...document.querySelectorAll('#anatomy-stage .anatomy-photo-overlay')];
 const anatomyLabel = document.querySelector('#anatomy-stage .anatomy-current-label');
 
@@ -68,14 +52,11 @@ function showPart(part) {
   anatomyStage?.classList.toggle('is-filtered', !showAll);
 
   anatomyPhotoLayers.forEach((layer) => {
-    layer.classList.toggle('is-active', !showAll && layer.dataset.part === part);
+    const active = !showAll && layer.dataset.part === part;
+    layer.classList.toggle('is-active', active);
+    layer.setAttribute('aria-hidden', showAll || active ? 'false' : 'true');
+    layer.alt = active ? `${part} component of a Goodyear welt shoe` : '';
   });
-
-  if (anatomyBaseImage) {
-    anatomyBaseImage.alt = showAll
-      ? 'Exploded Goodyear welt shoe showing all construction layers'
-      : `Exploded Goodyear welt shoe with the ${part} highlighted`;
-  }
 
   if (anatomyLabel) {
     const activeButton = partButtons.find((button) => button.dataset.part === part);
