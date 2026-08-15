@@ -1,0 +1,338 @@
+/* 30A — VISUAL POLISH TOKENS --------------------------------------------- */
+:root {
+  --polish-paper: #fbf7ef;
+  --polish-paper-deep: #eee2d0;
+  --polish-line: rgba(73, 49, 31, .18);
+  --polish-line-strong: rgba(73, 49, 31, .34);
+  --polish-shadow: 0 18px 45px rgba(46, 29, 17, .10);
+}
+
+/* 30B — QUIETER PAGE TEXTURE ---------------------------------------------- */
+body::before {
+  opacity: .075;
+  background-size: 24px 24px;
+}
+
+/* 30C — MORE COMPACT, BALANCED HEADER ------------------------------------ */
+.site-header {
+  padding: 10px 18px;
+  background: rgba(25, 19, 15, .97);
+}
+
+.brand {
+  gap: 10px;
+}
+
+.brand-mark {
+  width: 40px;
+  font-size: .78rem;
+  border-color: rgba(255,255,255,.28);
+}
+
+.brand-copy strong {
+  font-size: 1rem;
+  letter-spacing: .01em;
+}
+
+.nav-toggle {
+  font-size: .94rem;
+  font-weight: 650;
+}
+
+/* 30D — SECTION RHYTHM ---------------------------------------------------- */
+.section-heading {
+  margin-bottom: 32px;
+}
+
+.section-heading p:last-child {
+  max-width: 660px;
+}
+
+/* 30E — ANATOMY SECTION: MAKE THE DRAWING THE HERO ----------------------- */
+#anatomy.section-pad {
+  padding-top: 76px;
+}
+
+.anatomy-grid {
+  gap: 30px;
+}
+
+.anatomy-stage {
+  min-height: 520px;
+  padding: 18px;
+  background:
+    radial-gradient(circle at 50% 38%, rgba(255,255,255,.72), transparent 55%),
+    linear-gradient(145deg, #eadcc7 0%, #f9f2e7 54%, #e8d8c1 100%);
+  border: 1px solid rgba(116, 80, 49, .24);
+  border-radius: 24px;
+  box-shadow: var(--polish-shadow), inset 0 1px rgba(255,255,255,.75);
+}
+
+.anatomy-stage::before {
+  content: "EXPLODED CONSTRUCTION";
+  position: absolute;
+  top: 17px;
+  left: 20px;
+  z-index: 2;
+  padding: 5px 8px;
+  color: rgba(74, 50, 31, .58);
+  background: rgba(255, 250, 241, .5);
+  border: 1px solid rgba(91, 63, 41, .10);
+  border-radius: 999px;
+  font-size: .58rem;
+  font-weight: 850;
+  letter-spacing: .14em;
+}
+
+.anatomy-stage::after {
+  inset: 15px;
+  border-color: rgba(97,72,49,.10);
+  border-radius: 18px;
+}
+
+.anatomy-stage svg {
+  width: 98%;
+  filter: drop-shadow(0 10px 8px rgba(66, 42, 25, .08));
+}
+
+.anatomy-hint {
+  display: none;
+}
+
+/* 30F — MORE MATERIAL-LIKE LAYERS ---------------------------------------- */
+.anatomy-layer[data-part="upper"] {
+  fill: #8b5a3d;
+  stroke: #3d291f;
+  stroke-width: 4;
+  filter: drop-shadow(0 4px 2px rgba(48,28,17,.12));
+}
+
+.anatomy-layer[data-part="insole"] {
+  fill: #d9bd91;
+  stroke: #67503a;
+}
+
+.anatomy-layer[data-part="gemming"] {
+  fill: #e3dfd2;
+  stroke: #777064;
+}
+
+.anatomy-layer[data-part="welt"] {
+  fill: #a8794c;
+  stroke: #503623;
+  filter: drop-shadow(0 3px 2px rgba(48,28,17,.10));
+}
+
+.anatomy-layer[data-part="filler"] {
+  fill: #c38349;
+  stroke: #714929;
+  stroke-dasharray: 3 4;
+}
+
+.anatomy-layer[data-part="shank"] {
+  fill: #5c5c60;
+  stroke: #353539;
+}
+
+.anatomy-layer[data-part="outsole"] {
+  fill: #583925;
+  stroke: #2c1d15;
+  filter: drop-shadow(0 5px 3px rgba(48,28,17,.12));
+}
+
+.anatomy-layer[data-part="heel"] {
+  fill: #4d3021;
+  stroke: #2b1d16;
+}
+
+.anatomy-stage.is-filtered .anatomy-layer {
+  opacity: .10;
+}
+
+.anatomy-stage.is-filtered .anatomy-layer.is-selected {
+  transform: scale(1.055);
+  filter: drop-shadow(0 9px 6px rgba(59, 37, 22, .18));
+}
+
+/* 30G — DENSER, CLEARER PART CONTROLS ------------------------------------ */
+.anatomy-controls {
+  gap: 7px;
+}
+
+.part-button {
+  position: relative;
+  grid-template-columns: 38px 1fr;
+  gap: 0 9px;
+  min-height: 64px;
+  padding: 11px 13px;
+  overflow: hidden;
+  background: rgba(255, 252, 246, .38);
+  border-color: rgba(76, 53, 36, .15);
+  border-radius: 14px;
+}
+
+.part-button::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: transparent;
+}
+
+.part-button span {
+  font-size: .88rem;
+  line-height: 1.3;
+}
+
+.part-button strong {
+  font-size: .92rem;
+  line-height: 1.22;
+}
+
+.part-button small {
+  margin-top: 2px;
+  font-size: .78rem;
+  line-height: 1.25;
+}
+
+.part-button:hover,
+.part-button.active {
+  transform: none;
+  background: rgba(255, 253, 249, .96);
+  border-color: rgba(130, 87, 53, .46);
+  box-shadow: 0 7px 20px rgba(67, 42, 25, .07);
+}
+
+.part-button.active::before {
+  background: #9f6944;
+}
+
+.part-button.active span {
+  color: #7d4c31;
+}
+
+.part-button.active strong {
+  color: #281a12;
+}
+
+/* 30H — MOBILE: REMOVE THE AIR, KEEP THE DETAIL -------------------------- */
+@media (max-width: 760px) {
+  .section-pad {
+    padding: 54px 18px;
+  }
+
+  .site-header {
+    padding: 8px 14px;
+  }
+
+  .brand-mark {
+    width: 38px;
+  }
+
+  .brand-copy strong {
+    font-size: .96rem;
+  }
+
+  .site-nav {
+    top: 58px;
+  }
+
+  #anatomy.section-pad {
+    padding-top: 46px;
+  }
+
+  #anatomy .section-heading {
+    margin-bottom: 24px;
+  }
+
+  #anatomy .section-heading h2 {
+    margin-bottom: 11px;
+    font-size: clamp(2.05rem, 10.5vw, 3.15rem);
+  }
+
+  #anatomy .section-heading p:last-child {
+    font-size: .93rem;
+    line-height: 1.48;
+  }
+
+  .anatomy-grid {
+    gap: 20px;
+  }
+
+  .anatomy-stage {
+    min-height: 0;
+    padding: 7px;
+    border-radius: 20px;
+    box-shadow: 0 12px 28px rgba(46, 29, 17, .09);
+  }
+
+  .anatomy-stage::before {
+    top: 12px;
+    left: 13px;
+    padding: 4px 7px;
+    font-size: .52rem;
+  }
+
+  .anatomy-stage::after {
+    inset: 10px;
+    border-radius: 14px;
+  }
+
+  .anatomy-stage svg {
+    width: 100%;
+    margin: -3px 0;
+  }
+
+  .anatomy-controls {
+    gap: 6px;
+  }
+
+  .part-button {
+    grid-template-columns: 34px 1fr;
+    min-height: 58px;
+    padding: 10px 11px;
+    border-radius: 12px;
+  }
+
+  .part-button span {
+    font-size: .82rem;
+  }
+
+  .part-button strong {
+    font-size: .9rem;
+  }
+
+  .part-button small {
+    font-size: .75rem;
+  }
+}
+
+/* 30I — VERY SMALL PHONES ------------------------------------------------- */
+@media (max-width: 390px) {
+  .site-header {
+    padding-left: 11px;
+    padding-right: 11px;
+  }
+
+  .brand {
+    gap: 8px;
+  }
+
+  .brand-mark {
+    width: 35px;
+    font-size: .7rem;
+  }
+
+  .brand-copy strong {
+    font-size: .9rem;
+  }
+
+  #anatomy.section-pad {
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+
+  .part-button small {
+    font-size: .72rem;
+  }
+}
