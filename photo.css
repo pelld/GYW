@@ -1,0 +1,136 @@
+/* 40A — REALISTIC ANATOMY VIEW -------------------------------------------- */
+#anatomy .section-heading p:last-child {
+  font-size: 0;
+}
+
+#anatomy .section-heading p:last-child::after {
+  content: "Tap a part name or the shoe itself to explore a realistic exploded Goodyear-welt construction.";
+  display: block;
+  max-width: 680px;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+.anatomy-stage {
+  position: relative;
+  min-height: 0;
+  aspect-ratio: 320 / 333;
+  padding: 0;
+  overflow: hidden;
+  background-color: #eee8df;
+  background-image: url("assets/gyw-anatomy.webp");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border: 1px solid rgba(95, 65, 44, .22);
+  border-radius: 22px;
+  box-shadow: 0 18px 42px rgba(42, 28, 18, .14);
+}
+
+.anatomy-stage::before {
+  content: "REALISTIC EXPLODED VIEW";
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 5;
+  padding: 5px 8px;
+  color: #5f4a39;
+  background: rgba(255, 250, 243, .88);
+  border: 1px solid rgba(81, 56, 38, .14);
+  border-radius: 999px;
+  font-size: .58rem;
+  font-weight: 850;
+  letter-spacing: .13em;
+  backdrop-filter: blur(8px);
+}
+
+.anatomy-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.25);
+  transition: background .22s ease;
+}
+
+/* 40B — KEEP THE EXISTING SVG ONLY AS AN INVISIBLE CLICK MAP -------------- */
+.anatomy-stage svg {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: .001;
+  filter: none;
+}
+
+.anatomy-stage .anatomy-layer {
+  fill: #000;
+  stroke: #000;
+  opacity: 1;
+  pointer-events: all;
+}
+
+.anatomy-stage.is-filtered .anatomy-layer,
+.anatomy-stage.is-filtered .anatomy-layer.is-selected {
+  opacity: 1;
+  transform: none;
+  filter: none;
+}
+
+/* 40C — VISUAL FOCUS FOR EACH SELECTED COMPONENT ------------------------- */
+.anatomy-grid:has(.part-button[data-part="upper"].active) .anatomy-stage::after {
+  background: radial-gradient(ellipse 58% 24% at 57% 19%, transparent 0 58%, rgba(245,239,231,.78) 88%);
+}
+
+.anatomy-grid:has(.part-button[data-part="insole"].active) .anatomy-stage::after {
+  background: radial-gradient(ellipse 62% 13% at 57% 36%, transparent 0 54%, rgba(245,239,231,.80) 88%);
+}
+
+.anatomy-grid:has(.part-button[data-part="gemming"].active) .anatomy-stage::after {
+  background: radial-gradient(ellipse 62% 11% at 57% 46%, transparent 0 50%, rgba(245,239,231,.82) 86%);
+}
+
+.anatomy-grid:has(.part-button[data-part="welt"].active) .anatomy-stage::after {
+  background: radial-gradient(ellipse 65% 10% at 56% 55%, transparent 0 50%, rgba(245,239,231,.82) 87%);
+}
+
+.anatomy-grid:has(.part-button[data-part="filler"].active) .anatomy-stage::after {
+  background: radial-gradient(ellipse 50% 10% at 48% 65%, transparent 0 50%, rgba(245,239,231,.84) 88%);
+}
+
+.anatomy-grid:has(.part-button[data-part="shank"].active) .anatomy-stage::after {
+  background: radial-gradient(ellipse 48% 9% at 52% 73%, transparent 0 48%, rgba(245,239,231,.84) 88%);
+}
+
+.anatomy-grid:has(.part-button[data-part="outsole"].active) .anatomy-stage::after {
+  background: radial-gradient(ellipse 67% 12% at 57% 82%, transparent 0 52%, rgba(245,239,231,.82) 88%);
+}
+
+.anatomy-grid:has(.part-button[data-part="heel"].active) .anatomy-stage::after {
+  background: radial-gradient(ellipse 29% 17% at 30% 88%, transparent 0 52%, rgba(245,239,231,.84) 88%);
+}
+
+/* 40D — MOBILE ------------------------------------------------------------ */
+@media (max-width: 760px) {
+  #anatomy .section-heading p:last-child::after {
+    font-size: .93rem;
+  }
+
+  .anatomy-stage {
+    width: 100%;
+    border-radius: 18px;
+    background-size: cover;
+  }
+
+  .anatomy-stage::before {
+    top: 10px;
+    left: 10px;
+    font-size: .51rem;
+  }
+}
