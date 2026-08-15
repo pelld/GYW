@@ -35,11 +35,7 @@
   aspect-ratio: 1 / 1;
   padding: 0;
   overflow: hidden;
-  background-color: #fbf7ef;
-  background-image: url("assets/labelled-anatomy.webp?v=20260815-1928") !important;
-  background-repeat: no-repeat !important;
-  background-position: center !important;
-  background-size: contain !important;
+  background: #fbf7ef url("assets/labelled-anatomy.svg?v=20260815-1938") center / contain no-repeat !important;
   border: 1px solid rgba(95, 65, 44, .18);
   border-radius: 22px;
   box-shadow: 0 18px 42px rgba(42, 28, 18, .11);
