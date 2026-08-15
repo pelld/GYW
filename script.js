@@ -1,10 +1,4 @@
-// 20A — VISUAL POLISH STYLESHEET ------------------------------------------
-const polishSheet = document.createElement('link');
-polishSheet.rel = 'stylesheet';
-polishSheet.href = 'polish.css';
-document.head.appendChild(polishSheet);
-
-// 20B — MOBILE NAVIGATION --------------------------------------------------
+// 20A — MOBILE NAVIGATION --------------------------------------------------
 const navToggle = document.querySelector('.nav-toggle');
 const siteNav = document.querySelector('.site-nav');
 
@@ -18,25 +12,52 @@ siteNav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', 
   navToggle?.setAttribute('aria-expanded', 'false');
 }));
 
-// 20C — INTERACTIVE ANATOMY ------------------------------------------------
+// 20B — INTERACTIVE PHOTO LAYERS ------------------------------------------
 const anatomyStage = document.querySelector('#anatomy-stage');
 const partButtons = [...document.querySelectorAll('.part-button')];
-const anatomyLayers = [...document.querySelectorAll('.anatomy-layer')];
+const anatomyMasterImage = 'assets/layers/whole-system.webp?v=20260815-1748';
+
+const anatomyCrops = {
+  upper:   { x: 0,  y: 0,   w: 420, h: 155 },
+  insole:  { x: 0,  y: 118, w: 420, h: 88 },
+  gemming: { x: 0,  y: 158, w: 420, h: 74 },
+  welt:    { x: 0,  y: 194, w: 420, h: 72 },
+  filler:  { x: 0,  y: 228, w: 420, h: 74 },
+  shank:   { x: 70, y: 268, w: 280, h: 70 },
+  outsole: { x: 0,  y: 292, w: 420, h: 76 },
+  heel:    { x: 0,  y: 310, w: 190, h: 81 }
+};
+
+function anatomyMarkup(part) {
+  if (part === 'all') {
+    return `<img class="anatomy-photo is-visible" src="${anatomyMasterImage}" alt="Exploded Goodyear welt shoe showing all construction layers">`;
+  }
+
+  const crop = anatomyCrops[part];
+  if (!crop) return '';
+
+  return `
+    <svg class="anatomy-photo anatomy-photo--crop is-visible" viewBox="${crop.x} ${crop.y} ${crop.w} ${crop.h}" role="img" aria-label="${part} component of a Goodyear welt shoe">
+      <image href="${anatomyMasterImage}" x="0" y="0" width="420" height="391" preserveAspectRatio="none"></image>
+    </svg>`;
+}
 
 function showPart(part) {
+  if (!anatomyStage) return;
+
   partButtons.forEach((button) => button.classList.toggle('active', button.dataset.part === part));
-  const showAll = part === 'all';
-  anatomyStage?.classList.toggle('is-filtered', !showAll);
-  anatomyLayers.forEach((layer) => layer.classList.toggle('is-selected', !showAll && layer.dataset.part === part));
+  const activeButton = partButtons.find((button) => button.dataset.part === part);
+  const label = activeButton?.querySelector('strong')?.textContent || 'Whole system';
+
+  anatomyStage.innerHTML = `
+    <div class="anatomy-photo-stack">${anatomyMarkup(part)}</div>
+    <div class="anatomy-view-label">${label}</div>`;
 }
 
 partButtons.forEach((button) => button.addEventListener('click', () => showPart(button.dataset.part)));
-anatomyLayers.forEach((layer) => {
-  layer.style.cursor = 'pointer';
-  layer.addEventListener('click', () => showPart(layer.dataset.part));
-});
+showPart('all');
 
-// 20D — PROCESS SCROLL PROGRESS -------------------------------------------
+// 20C — PROCESS SCROLL PROGRESS -------------------------------------------
 const processShell = document.querySelector('.process-shell');
 const processFill = document.querySelector('#process-progress-fill');
 
@@ -54,7 +75,7 @@ window.addEventListener('scroll', updateProcessProgress, { passive: true });
 window.addEventListener('resize', updateProcessProgress);
 updateProcessProgress();
 
-// 20E — CONSTRUCTION COMPARISON DATA --------------------------------------
+// 20D — CONSTRUCTION COMPARISON DATA --------------------------------------
 const compareData = {
   blake: {
     title: 'Goodyear welt vs Blake stitch',
@@ -99,7 +120,7 @@ function renderCompare(key) {
 compareTabs.forEach((tab) => tab.addEventListener('click', () => renderCompare(tab.dataset.compare)));
 renderCompare('blake');
 
-// 20F — GLOSSARY FILTER ----------------------------------------------------
+// 20E — GLOSSARY FILTER ----------------------------------------------------
 const glossarySearch = document.querySelector('#glossary-search');
 const glossaryEntries = [...document.querySelectorAll('#glossary-list > div')];
 
@@ -108,7 +129,7 @@ glossarySearch?.addEventListener('input', () => {
   glossaryEntries.forEach((entry) => entry.classList.toggle('is-hidden', query && !entry.textContent.toLowerCase().includes(query)));
 });
 
-// 20G — MINI QUIZ ----------------------------------------------------------
+// 20F — MINI QUIZ ----------------------------------------------------------
 const quizQuestions = [
   {
     q: 'What is the welt’s main structural role?',
