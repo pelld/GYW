@@ -45,10 +45,26 @@
   pointer-events: none;
 }
 
+/* 70B — ONLY UPPER + INSOLE FOR POSITIONING ------------------------------- */
+#anatomy .anatomy-photo-overlay--gemming,
+#anatomy .anatomy-photo-overlay--welt,
+#anatomy .anatomy-photo-overlay--filler,
+#anatomy .anatomy-photo-overlay--shank,
+#anatomy .anatomy-photo-overlay--outsole,
+#anatomy .anatomy-photo-overlay--heel,
+#anatomy .part-button[data-part="gemming"],
+#anatomy .part-button[data-part="welt"],
+#anatomy .part-button[data-part="filler"],
+#anatomy .part-button[data-part="shank"],
+#anatomy .part-button[data-part="outsole"],
+#anatomy .part-button[data-part="heel"] {
+  display: none !important;
+}
+
 #anatomy .anatomy-photo-overlay--upper  { content: url("assets/parts-v2/upper.webp?v=20260815-1918"); }
 #anatomy .anatomy-photo-overlay--insole { content: url("assets/parts-v2/insole.webp?v=20260815-1918"); }
 
-/* 70B — WHOLE SYSTEM: JUST UPPER + INSOLE --------------------------------- */
+/* 70C — WHOLE SYSTEM: JUST UPPER + INSOLE --------------------------------- */
 #anatomy .anatomy-stage:not(.is-filtered) .anatomy-photo-overlay--upper {
   width: 90%; left: 5%; top: 9%; transform: none; opacity: 1;
 }
@@ -56,7 +72,7 @@
   width: 86%; left: 7%; top: 50%; transform: none; opacity: 1;
 }
 
-/* 70C — INDIVIDUAL MODE --------------------------------------------------- */
+/* 70D — INDIVIDUAL MODE --------------------------------------------------- */
 #anatomy .anatomy-stage.is-filtered .anatomy-photo-overlay {
   opacity: .14;
   filter: grayscale(.1) brightness(.98);
@@ -73,7 +89,7 @@
   width: 86%; left: 7%; top: 50%; transform: none;
 }
 
-/* 70D — REMOVE EARLIER ANATOMY EXPERIMENTS ------------------------------- */
+/* 70E — REMOVE EARLIER ANATOMY EXPERIMENTS ------------------------------- */
 #anatomy .anatomy-stage > svg,
 #anatomy .photo-layer,
 #anatomy .photo-focus,
@@ -104,7 +120,7 @@
   color: #806d5f;
 }
 
-/* 70E — MOBILE ------------------------------------------------------------ */
+/* 70F — MOBILE ------------------------------------------------------------ */
 @media (max-width: 760px) {
   #anatomy .anatomy-stage { aspect-ratio: 1 / 1.02; border-radius: 18px; }
   #anatomy .anatomy-stage::before { top: 10px; left: 10px; font-size: .49rem; }
