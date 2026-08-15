@@ -1,0 +1,1 @@
+High-quality component assets for the interactive anatomy view.
