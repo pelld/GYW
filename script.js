@@ -180,3 +180,42 @@ function answerQuiz(choice) {
 }
 
 renderQuiz();
+
+// 20G — HD STITCH CUTAWAYS -------------------------------------------------
+async function loadHdStitchCutaway(selector, files, altText) {
+  const box = document.querySelector(selector);
+  if (!box) return;
+
+  try {
+    const chunks = await Promise.all(files.map(async (file) => {
+      const response = await fetch(`${file}?v=20260815-2015`);
+      if (!response.ok) throw new Error(`Unable to load ${file}`);
+      return (await response.text()).trim();
+    }));
+
+    const image = document.createElement('img');
+    image.src = `data:image/webp;base64,${chunks.join('')}`;
+    image.alt = altText;
+    image.decoding = 'async';
+    image.loading = 'eager';
+    image.style.cssText = 'display:block;width:100%;height:100%;object-fit:cover;border-radius:inherit;';
+
+    box.replaceChildren(image);
+    box.removeAttribute('aria-hidden');
+    box.style.cssText = 'position:relative;display:block;width:100%;height:auto;aspect-ratio:4 / 3;min-height:0;overflow:hidden;border-radius:18px;background:#eee3d4;';
+  } catch (error) {
+    console.warn('HD stitch cutaway failed to load:', error);
+  }
+}
+
+loadHdStitchCutaway(
+  '.inseam-illustration',
+  ['assets/hd/outsole-0.b64'],
+  'Detailed cutaway illustration of the Goodyear welt inseam joining the upper, insole structure and welt'
+);
+
+loadHdStitchCutaway(
+  '.outsole-illustration',
+  ['assets/hd/outsole-a.b64', 'assets/hd/outsole-b.b64'],
+  'Detailed cutaway illustration of the outsole stitch joining the welt to the outsole'
+);
