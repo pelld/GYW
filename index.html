@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <!-- 00A — DOCUMENT META -------------------------------------------------- -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#19140f">
+  <meta name="description" content="An interactive visual guide to Goodyear welt shoe construction: anatomy, process, history, repair, comparisons and terminology.">
+  <title>Goodyear Welt — An Interactive Anatomy</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- 01A — ACCESSIBILITY -------------------------------------------------- -->
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <!-- 02A — SITE HEADER ---------------------------------------------------- -->
+  <header class="site-header" id="top">
+    <a class="brand" href="#top" aria-label="Goodyear Welt home">
+      <span class="brand-mark" aria-hidden="true">GYW</span>
+      <span class="brand-copy"><strong>Goodyear Welt</strong><small>shoe construction, taken apart</small></span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+      <a href="#anatomy">Anatomy</a>
+      <a href="#process">How it is made</a>
+      <a href="#compare">Compare</a>
+      <a href="#history">History</a>
+      <a href="#repair">Repair</a>
+      <a href="#glossary">Glossary</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <!-- 03A — HERO --------------------------------------------------------- -->
+    <section class="hero section-pad">
+      <div class="hero-copy">
+        <p class="eyebrow">A shoe is a small piece of engineering</p>
+        <h1>What, exactly, is a <em>Goodyear welt?</em></h1>
+        <p class="lede">It is not a type of leather, a brand, or the visible stitching by itself. It is a construction system: the upper and insole are joined to a separate strip called the <strong>welt</strong>, and the outsole is then attached to that welt.</p>
+        <div class="hero-actions">
+          <a class="button primary" href="#anatomy">Take the shoe apart</a>
+          <a class="button secondary" href="#process">See the build sequence</a>
+        </div>
+        <dl class="hero-facts" aria-label="Key facts">
+          <div><dt>2 seams</dt><dd>inseam + outsole stitch</dd></div>
+          <div><dt>Repairable</dt><dd>the sole can be replaced without dismantling the upper</dd></div>
+          <div><dt>Layered</dt><dd>insole, welt, filler, shank and outsole work together</dd></div>
+        </dl>
+      </div>
+
+      <!-- 03B — HERO CUTAWAY SVG ----------------------------------------- -->
+      <div class="hero-visual" aria-label="Stylised cutaway of a Goodyear welted shoe">
+        <svg viewBox="0 0 760 520" role="img" aria-labelledby="heroSvgTitle heroSvgDesc">
+          <title id="heroSvgTitle">Cutaway diagram of a Goodyear welted shoe</title>
+          <desc id="heroSvgDesc">A side cutaway showing the upper, insole, gemming, welt, cork filler, shank, outsole and heel.</desc>
+          <defs>
+            <linearGradient id="upperGrad" x1="0" x2="1"><stop offset="0" stop-color="#673f29"/><stop offset="1" stop-color="#9c6d45"/></linearGradient>
+            <pattern id="corkPattern" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="2" fill="#b97c45"/><circle cx="9" cy="8" r="1.7" fill="#8f5a32"/></pattern>
+          </defs>
+          <path d="M130 280 C154 217 231 188 348 178 C430 171 505 179 554 197 C585 209 600 232 612 266 L595 300 L217 309 C174 308 145 301 130 280Z" fill="url(#upperGrad)" stroke="#24170f" stroke-width="5"/>
+          <path d="M220 292 C302 284 424 283 585 291 L580 312 C439 316 320 319 212 315Z" fill="#d5b98d" stroke="#35261c" stroke-width="4"/>
+          <path d="M207 309 C196 326 204 345 228 351 L582 348 C595 344 604 333 601 315 L579 309 L575 326 L227 328 L225 311Z" fill="#b99a6e" stroke="#36271b" stroke-width="4"/>
+          <path d="M245 316 L560 315 L552 348 L252 349Z" fill="url(#corkPattern)" stroke="#6e4b2e" stroke-width="3"/>
+          <path d="M393 321 L507 322 L482 339 L374 340Z" fill="#55565b" opacity=".92"/>
+          <path d="M206 346 C298 350 423 351 594 344 L603 374 C448 386 303 386 191 373Z" fill="#5a3925" stroke="#21150e" stroke-width="4"/>
+          <path d="M500 374 L600 368 L622 421 L529 427Z" fill="#4a2e1e" stroke="#21150e" stroke-width="4"/>
+          <path d="M514 390 L609 385 M520 403 L615 399 M526 416 L620 413" stroke="#a57b57" stroke-width="3"/>
+          <path d="M199 345 C304 360 449 355 599 344" fill="none" stroke="#e7b966" stroke-width="5" stroke-dasharray="8 7"/>
+          <path d="M214 323 C287 331 386 331 575 326" fill="none" stroke="#f3dfb8" stroke-width="4" stroke-dasharray="5 6"/>
+          <g class="hero-label"><path d="M132 169 L223 226"/><circle cx="132" cy="169" r="5"/><text x="36" y="164">Upper</text></g>
+          <g class="hero-label"><path d="M657 218 L560 296"/><circle cx="657" cy="218" r="5"/><text x="664" y="223">Insole</text></g>
+          <g class="hero-label"><path d="M102 342 L211 329"/><circle cx="102" cy="342" r="5"/><text x="30" y="347">Welt</text></g>
+          <g class="hero-label"><path d="M657 324 L545 333"/><circle cx="657" cy="324" r="5"/><text x="664" y="329">Cork filler</text></g>
+          <g class="hero-label"><path d="M668 365 L505 365"/><circle cx="668" cy="365" r="5"/><text x="675" y="370">Outsole</text></g>
+          <g class="hero-label"><path d="M624 454 L570 410"/><circle cx="624" cy="454" r="5"/><text x="631" y="459">Heel stack</text></g>
+        </svg>
+      </div>
+    </section>
+
+    <!-- 04A — THE CORE IDEA ------------------------------------------------ -->
+    <section class="dark-band section-pad compact">
+      <div class="section-heading light">
+        <p class="eyebrow">The core idea</p>
+        <h2>The welt is an intermediary.</h2>
+      </div>
+      <div class="three-up">
+        <article><span class="big-number">01</span><h3>Inside structure</h3><p>The upper is pulled around the last and joined to the insole area with the welt in a strong <strong>inseam</strong>.</p></article>
+        <article><span class="big-number">02</span><h3>Replaceable underside</h3><p>The outsole is attached to the projecting welt with a separate stitch, keeping the outsole seam away from the insole.</p></article>
+        <article><span class="big-number">03</span><h3>Repair without starting again</h3><p>A cobbler can remove the worn outsole and stitch a replacement to the welt while leaving the already-shaped upper and insole largely intact.</p></article>
+      </div>
+    </section>
+
+    <!-- 05A — INTERACTIVE ANATOMY ----------------------------------------- -->
+    <section class="section-pad" id="anatomy">
+      <div class="section-heading">
+        <p class="eyebrow">Interactive anatomy</p>
+        <h2>Build the shoe from the foot down.</h2>
+        <p>Tap a layer to isolate it. The diagram is deliberately schematic: real shoes vary by maker, style and production method.</p>
+      </div>
+
+      <div class="anatomy-grid">
+        <div class="anatomy-stage" id="anatomy-stage">
+          <svg viewBox="0 0 820 540" role="img" aria-labelledby="anatomyTitle anatomyDesc">
+            <title id="anatomyTitle">Exploded cross-section of a Goodyear welted shoe</title>
+            <desc id="anatomyDesc">Eight selectable layers of a shoe construction shown separated vertically.</desc>
+            <g class="anatomy-layer" data-part="upper"><path d="M113 206 C146 131 241 95 365 92 C476 90 575 117 647 176 L625 239 C507 208 318 206 149 247Z"/></g>
+            <g class="anatomy-layer" data-part="insole"><path d="M145 263 C272 244 474 245 635 259 L628 283 C463 292 288 293 151 286Z"/></g>
+            <g class="anatomy-layer" data-part="gemming"><path d="M159 296 L618 294 L608 312 L185 318 L159 309Z"/></g>
+            <g class="anatomy-layer" data-part="welt"><path d="M126 320 C260 337 483 335 654 315 L658 337 C481 359 257 359 118 341Z"/></g>
+            <g class="anatomy-layer" data-part="filler"><path d="M200 347 C304 359 468 359 583 348 L568 374 C456 384 317 384 214 373Z"/></g>
+            <g class="anatomy-layer" data-part="shank"><path d="M367 378 L548 371 L519 390 L347 397Z"/></g>
+            <g class="anatomy-layer" data-part="outsole"><path d="M115 404 C265 424 492 420 655 397 L670 426 C499 453 265 455 99 431Z"/></g>
+            <g class="anatomy-layer" data-part="heel"><path d="M520 429 L652 418 L680 496 L550 505Z"/></g>
+          </svg>
+          <p class="anatomy-hint">Tap a label →</p>
+        </div>
+
+        <div class="anatomy-controls" role="list" aria-label="Shoe parts">
+          <button class="part-button active" data-part="all" type="button"><span>00</span><strong>Whole system</strong><small>Show every layer</small></button>
+          <button class="part-button" data-part="upper" type="button"><span>01</span><strong>Upper</strong><small>The leather or textile shell around the foot.</small></button>
+          <button class="part-button" data-part="insole" type="button"><span>02</span><strong>Insole</strong><small>The structural platform beneath the foot; not merely a removable sock liner.</small></button>
+          <button class="part-button" data-part="gemming" type="button"><span>03</span><strong>Gemming / rib</strong><small>A raised rib, commonly canvas, attached under the insole for the inseam to grip.</small></button>
+          <button class="part-button" data-part="welt" type="button"><span>04</span><strong>Welt</strong><small>A narrow strip, usually leather, running around the perimeter.</small></button>
+          <button class="part-button" data-part="filler" type="button"><span>05</span><strong>Filler</strong><small>Usually cork or another compressible material occupying the cavity inside the welt.</small></button>
+          <button class="part-button" data-part="shank" type="button"><span>06</span><strong>Shank</strong><small>A stiffener through the waist/arch area; material varies.</small></button>
+          <button class="part-button" data-part="outsole" type="button"><span>07</span><strong>Outsole</strong><small>The replaceable ground-contact layer, leather or rubber.</small></button>
+          <button class="part-button" data-part="heel" type="button"><span>08</span><strong>Heel</strong><small>Often built from stacked leather lifts, rubber units, or a combination.</small></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 06A — TWO-STITCH DIAGRAM ------------------------------------------ -->
+    <section class="paper-band section-pad">
+      <div class="section-heading">
+        <p class="eyebrow">The detail that matters most</p>
+        <h2>Two seams doing two different jobs.</h2>
+      </div>
+      <div class="stitch-diagram">
+        <div class="stitch-card">
+          <div class="stitch-illustration inseam-illustration" aria-hidden="true"><span class="upper-strip"></span><span class="rib-strip"></span><span class="welt-strip"></span><span class="thread-loop one"></span><span class="thread-loop two"></span><span class="thread-loop three"></span></div>
+          <p class="kicker">Seam 1</p><h3>The inseam</h3><p>Joins the <strong>welt + upper + insole rib/holdfast</strong>. This is the structural connection around the shoe.</p>
+        </div>
+        <div class="operator">+</div>
+        <div class="stitch-card">
+          <div class="stitch-illustration outsole-illustration" aria-hidden="true"><span class="welt-strip"></span><span class="sole-strip"></span><span class="thread-loop one"></span><span class="thread-loop two"></span><span class="thread-loop three"></span></div>
+          <p class="kicker">Seam 2</p><h3>The outsole stitch</h3><p>Joins the <strong>welt + outsole</strong>. This is the seam a cobbler can cut and remake during a conventional resole.</p>
+        </div>
+        <div class="operator">=</div>
+        <div class="stitch-card result"><p class="kicker">Result</p><h3>A separable sole unit</h3><p>The worn part can be replaced without sewing the new outsole directly through the insole.</p></div>
+      </div>
+    </section>
+
+    <!-- 07A — CONSTRUCTION PROCESS ---------------------------------------- -->
+    <section class="section-pad" id="process">
+      <div class="section-heading">
+        <p class="eyebrow">Factory sequence</p>
+        <h2>How a modern Goodyear-welted shoe is made.</h2>
+        <p>The exact order differs between factories, but the logic is consistent.</p>
+      </div>
+      <div class="process-shell">
+        <div class="process-progress" aria-hidden="true"><span id="process-progress-fill"></span></div>
+        <ol class="process-list">
+          <li class="process-step"><div class="step-index">01</div><div><h3>Cut and close the upper</h3><p>Pattern pieces are cut, skived where needed and stitched together to form the upper. Linings, eyelet facings, counters and other reinforcements are added according to the design.</p></div><span class="step-tag">upper making</span></li>
+          <li class="process-step"><div class="step-index">02</div><div><h3>Prepare the insole and last</h3><p>A substantial insole is fitted to the last. In many machine-welted shoes a rib or “gemming” is attached underneath; in hand-welted work a holdfast can be carved directly into a thick leather insole instead.</p></div><span class="step-tag">foundation</span></li>
+          <li class="process-step"><div class="step-index">03</div><div><h3>Last the upper</h3><p>The dampened or conditioned upper is pulled tightly over the last so the material takes the last’s three-dimensional shape. The lasting margin wraps beneath the insole.</p></div><span class="step-tag">shape</span></li>
+          <li class="process-step"><div class="step-index">04</div><div><h3>Sew the inseam</h3><p>The inseaming machine uses curved tools to stitch the welt to the upper and the insole rib. The upper is now mechanically locked to the shoe’s structural foundation.</p></div><span class="step-tag">first seam</span></li>
+          <li class="process-step"><div class="step-index">05</div><div><h3>Fill the bottom</h3><p>After trimming and levelling, a shank is positioned through the waist and the recessed forepart is filled—commonly with cork. The aim is a stable, reasonably level bed for the outsole.</p></div><span class="step-tag">support</span></li>
+          <li class="process-step"><div class="step-index">06</div><div><h3>Attach the outsole</h3><p>The outsole is shaped, bonded into position and then stitched to the welt around the forepart and sides. The stitch may remain visible or sit in a cut channel that is later closed.</p></div><span class="step-tag">second seam</span></li>
+          <li class="process-step"><div class="step-index">07</div><div><h3>Build the heel</h3><p>Depending on the design, leather lifts, rubber pieces or a pre-built heel unit are attached. A 270° welt commonly stops before the heel; a 360° welt continues around it.</p></div><span class="step-tag">heel</span></li>
+          <li class="process-step"><div class="step-index">08</div><div><h3>Finish</h3><p>Edges are trimmed, inked, waxed and burnished; the last is removed; a sock liner may be fitted; the upper is cleaned and polished. Decorative wheeling or fudging may be added to the welt edge.</p></div><span class="step-tag">finishing</span></li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- 08A — WELT VARIANTS ------------------------------------------------ -->
+    <section class="dark-band section-pad" id="variants">
+      <div class="section-heading light"><p class="eyebrow">Not all welts look alike</p><h2>Four details you will see on real shoes.</h2></div>
+      <div class="variant-grid">
+        <article class="variant-card"><div class="variant-icon"><span class="arc arc-270"></span></div><h3>270° welt</h3><p>The welt runs around the forepart and sides but terminates near the heel. This permits a tighter, neater heel seat and is common on dress shoes.</p></article>
+        <article class="variant-card"><div class="variant-icon"><span class="arc arc-360"></span></div><h3>360° welt</h3><p>The welt continues around the heel. It produces a visibly continuous perimeter and is common on robust shoes and boots.</p></article>
+        <article class="variant-card"><div class="variant-icon storm"><span></span></div><h3>Storm / split-reverse welt</h3><p>A raised or turned welt profile sits close to the upper and can improve resistance to dirt and splash entering at the welt junction. The terms are used inconsistently by makers.</p></article>
+        <article class="variant-card"><div class="variant-icon channel"><span></span></div><h3>Closed-channel sole stitch</h3><p>A shallow flap is cut into a leather outsole, the sole is stitched beneath it, and the flap is glued closed. It hides and protects the outsole thread for a cleaner bottom finish.</p></article>
+      </div>
+    </section>
+
+    <!-- 09A — COMPARISON --------------------------------------------------- -->
+    <section class="section-pad" id="compare">
+      <div class="section-heading"><p class="eyebrow">Construction comparison</p><h2>Goodyear is not automatically “best”.</h2><p>Construction is a design choice. A lighter, sleeker or cheaper shoe may rationally use a different method.</p></div>
+      <div class="compare-tabs" role="tablist" aria-label="Shoe construction comparisons">
+        <button class="compare-tab active" role="tab" aria-selected="true" data-compare="blake" type="button">Blake</button>
+        <button class="compare-tab" role="tab" aria-selected="false" data-compare="cemented" type="button">Cemented</button>
+        <button class="compare-tab" role="tab" aria-selected="false" data-compare="handwelt" type="button">Hand welt</button>
+        <button class="compare-tab" role="tab" aria-selected="false" data-compare="stitchdown" type="button">Stitchdown</button>
+      </div>
+      <div class="compare-panel" id="compare-panel" aria-live="polite"></div>
+      <div class="comparison-table-wrap">
+        <table class="comparison-table">
+          <thead><tr><th>Method</th><th>How outsole connects</th><th>Typical profile</th><th>Resole logic</th><th>Useful when…</th></tr></thead>
+          <tbody>
+            <tr class="highlight"><th>Goodyear welt</th><td>Outsole stitched to separate welt</td><td>Structured / medium</td><td>Cut outsole stitch; preserve upper/insole assembly</td><td>Longevity and repeatable repair matter</td></tr>
+            <tr><th>Blake</th><td>Stitch passes through outsole and insole</td><td>Slim / flexible</td><td>Requires access inside shoe and appropriate machinery/technique</td><td>Low profile and flexibility matter</td></tr>
+            <tr><th>Cemented</th><td>Adhesive bond</td><td>Almost any</td><td>Varies widely; some can be repaired, many are uneconomic to rebuild</td><td>Lightness, cost or complex sole units matter</td></tr>
+            <tr><th>Hand welt</th><td>Outsole stitched to welt; inseam worked through leather holdfast</td><td>Variable</td><td>Highly repairable in skilled hands</td><td>Traditional craft and hand-built structure matter</td></tr>
+            <tr><th>Stitchdown</th><td>Upper is flared outward and stitched to sole/midsole</td><td>Often broad / rugged</td><td>Repairable, but method differs from welt replacement</td><td>Rugged footwear and a broad platform matter</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 10A — WHAT IT FEELS LIKE ------------------------------------------ -->
+    <section class="paper-band section-pad">
+      <div class="section-heading"><p class="eyebrow">On foot</p><h2>What the construction changes—and what it does not.</h2></div>
+      <div class="truth-grid">
+        <article><h3>Structure</h3><p>Extra layers and the welt tend to create a firmer platform than a minimal direct-stitched or cemented shoe, though materials can reverse the stereotype.</p></article>
+        <article><h3>Flex</h3><p>A thick leather sole, heavy insole and dense heel stack can make a new pair feel stiff. A thin rubber sole on a light welted shoe can behave very differently.</p></article>
+        <article><h3>Water</h3><p>The indirect seam path can improve resistance to water ingress compared with a direct stitch through the insole, but <strong>Goodyear welted does not mean waterproof</strong>.</p></article>
+        <article><h3>Comfort</h3><p>Cork filler can compress with wear, but fit comes mainly from the last, upper pattern, insole shape and size. A bad-fitting welted shoe does not become a good-fitting shoe by magic.</p></article>
+      </div>
+    </section>
+
+    <!-- 11A — HISTORY ------------------------------------------------------ -->
+    <section class="section-pad" id="history">
+      <div class="section-heading"><p class="eyebrow">History</p><h2>Mechanising a difficult curved seam.</h2><p>The familiar one-line history hides a network of patents, inventors, mechanics and manufacturers.</p></div>
+      <div class="history-layout">
+        <div class="timeline">
+          <article><time>1856</time><div><h3>Blake’s breakthrough</h3><p>Lyman Reed Blake patented a machine for sewing soles to uppers from inside the shoe. It was a major step in mechanising shoemaking and gave its name to Blake construction.</p></div></article>
+          <article><time>1869</time><div><h3>Curved-needle welt machinery develops</h3><p>Patents from the period show machinery specifically intended to sew outer soles to welts using curved working tools. Daniel Mills’ 1869 patent was assigned to Charles Goodyear Jr.</p></div></article>
+          <article><time>1871</time><div><h3>Goodyear Jr. patents improvements</h3><p>Charles Goodyear Jr.’s US Patent 111,197 describes improvements to machinery for stitching soles to the welts of boots and shoes.</p></div></article>
+          <article><time>Late 19th c.</time><div><h3>Industrial system</h3><p>Successive patents refined guides, feed mechanisms, stitching, lasting and sole attachment. “Goodyear” came to describe a production system, not one isolated stitch.</p></div></article>
+          <article><time>Today</time><div><h3>Old logic, modern production</h3><p>Modern factories combine specialised machines, adhesives and prepared components with the same basic two-seam architecture: inseam to welt, then outsole to welt.</p></div></article>
+        </div>
+        <aside class="history-note"><p class="kicker">Common misconception</p><h3>Not the tyre company.</h3><p>The shoemaking name is connected to <strong>Charles Goodyear Jr.</strong>, son of Charles Goodyear, the rubber-vulcanisation pioneer. The history of the welting machines is more collaborative than the name suggests.</p><a href="#sources">See historical sources →</a></aside>
+      </div>
+    </section>
+
+    <!-- 12A — REPAIR / RESOLE --------------------------------------------- -->
+    <section class="dark-band section-pad" id="repair">
+      <div class="section-heading light"><p class="eyebrow">The second life</p><h2>What happens during a resole?</h2><p>The exact job depends on wear, materials and the cobbler. A resole is not always just “pull sole off, put sole on”.</p></div>
+      <div class="resole-flow">
+        <article><span>01</span><h3>Assess</h3><p>Check upper, welt, insole, heel, lining and structural damage. A destroyed insole or cracked upper can make a nominally resoleable shoe poor value to repair.</p></article>
+        <article><span>02</span><h3>Remove</h3><p>Cut the outsole stitch and remove the worn sole and usually the heel. Keep the welt where sound.</p></article>
+        <article><span>03</span><h3>Rebuild bottom</h3><p>Replace damaged filler, shank pieces or welt sections as required and restore a level bottom surface.</p></article>
+        <article><span>04</span><h3>New outsole</h3><p>Fit, bond, trim and stitch the replacement outsole to the welt.</p></article>
+        <article><span>05</span><h3>Heel & finish</h3><p>Rebuild the heel, dress the edges and refinish the shoe.</p></article>
+      </div>
+      <div class="repair-callout"><strong>Welt replacement ≠ routine resole.</strong><span>If the welt itself is too damaged, the repair becomes more invasive because the inseam may need to be opened and remade.</span></div>
+    </section>
+
+    <!-- 13A — IDENTIFICATION GUIDE ---------------------------------------- -->
+    <section class="section-pad" id="identify">
+      <div class="section-heading"><p class="eyebrow">Buying / inspecting</p><h2>Can you tell a Goodyear welt by looking?</h2><p>Often you can make an educated guess. You cannot always prove it from one visible row of stitches.</p></div>
+      <div class="identify-grid">
+        <div class="identify-card yes"><span>Useful clue</span><h3>A separate welt ledge</h3><p>Look for a distinct strip between the upper and sole, with outsole stitching running around its outer edge.</p></div>
+        <div class="identify-card maybe"><span>Not conclusive</span><h3>Visible sole stitching</h3><p>Stitchdown, Blake/Rapid and decorative stitching can produce visible seams too. “It has stitches” is not enough.</p></div>
+        <div class="identify-card maybe"><span>Not conclusive</span><h3>Fudge marks</h3><p>Little vertical marks on the welt can be functional, decorative or purely cosmetic. They do not prove how the shoe is constructed.</p></div>
+        <div class="identify-card yes"><span>Best evidence</span><h3>Maker specification</h3><p>A credible maker stating “Goodyear welted” plus a visible welt/sole seam is stronger evidence than appearance alone.</p></div>
+      </div>
+    </section>
+
+    <!-- 14A — MYTHS ------------------------------------------------------- -->
+    <section class="paper-band section-pad" id="myths">
+      <div class="section-heading"><p class="eyebrow">Myths</p><h2>Things “Goodyear welted” does not guarantee.</h2></div>
+      <div class="myth-list">
+        <details><summary><span>01</span>“It must be high quality.”</summary><p>No. Construction method is one variable. Leather quality, clicking, upper stitching, lasting, insole material, heel construction, quality control and fit can all be poor in a welted shoe—or excellent in a non-welted one.</p></details>
+        <details><summary><span>02</span>“It is waterproof.”</summary><p>No. The welted structure can make water ingress more difficult, but leather, stitching, tongue design and sole materials still allow water through.</p></details>
+        <details><summary><span>03</span>“The cork makes it custom-fit to your foot.”</summary><p>Only partly. Filler can compress to local pressure points, but it does not change the last, shoe length, toe shape or basic volume. Correct initial fit remains essential.</p></details>
+        <details><summary><span>04</span>“Every repair can preserve the welt forever.”</summary><p>No. Stitch holes, abrasion, poor previous repairs and damaged inseams eventually matter. A skilled cobbler may patch or replace sections, but this is more work than a standard resole.</p></details>
+        <details><summary><span>05</span>“360° is always better than 270°.”</summary><p>No. The difference is mainly how far the welt runs. A 270° welt can give a cleaner heel waist; a 360° welt gives a continuous welt edge. Quality depends on execution and intended use.</p></details>
+      </div>
+    </section>
+
+    <!-- 15A — GLOSSARY ---------------------------------------------------- -->
+    <section class="section-pad" id="glossary">
+      <div class="section-heading"><p class="eyebrow">Glossary</p><h2>Learn the language of the bottom of a shoe.</h2></div>
+      <div class="glossary-tools"><label for="glossary-search">Filter terms</label><input id="glossary-search" type="search" placeholder="Try “welt”, “last”, “gemming”…" autocomplete="off"></div>
+      <dl class="glossary-list" id="glossary-list">
+        <div><dt>Feather</dt><dd>The edge area of the insole/last where the upper turns under toward the bottom.</dd></div>
+        <div><dt>Gemming</dt><dd>A rib, often canvas and bonded to the underside of the insole, that provides a raised structure for the Goodyear inseam.</dd></div>
+        <div><dt>Holdfast</dt><dd>A ridge or channel worked directly into a thick leather insole in traditional hand-welting, replacing glued-on gemming.</dd></div>
+        <div><dt>Inseam</dt><dd>The hidden structural seam joining welt, upper lasting margin and the insole rib/holdfast.</dd></div>
+        <div><dt>Insole</dt><dd>The structural layer directly under the foot. Distinct from the removable comfort insert commonly called an insole in trainers.</dd></div>
+        <div><dt>Last</dt><dd>The three-dimensional foot-shaped form around which the upper is stretched and the shoe is built.</dd></div>
+        <div><dt>Outsole</dt><dd>The bottom layer designed to meet the ground. It may be leather, rubber or a combination.</dd></div>
+        <div><dt>Outseam / sole stitch</dt><dd>The visible or channel-hidden stitching that joins the outsole to the welt.</dd></div>
+        <div><dt>Shank</dt><dd>A stiffening component through the waist/arch area that helps the shoe retain shape and bridge loads between heel and forepart.</dd></div>
+        <div><dt>Welt</dt><dd>The narrow strip forming the intermediate connection between the upper/insole assembly and the outsole.</dd></div>
+        <div><dt>Wheeling / fudging</dt><dd>Small repeated impressions made around the welt edge, historically associated with stitch spacing and finishing and often decorative today.</dd></div>
+      </dl>
+    </section>
+
+    <!-- 16A — MINI QUIZ ---------------------------------------------------- -->
+    <section class="quiz-band section-pad" id="quiz">
+      <div class="section-heading light"><p class="eyebrow">Five-question check</p><h2>Can you now read a welted shoe?</h2></div>
+      <div class="quiz" id="quiz-box"></div>
+    </section>
+
+    <!-- 17A — SOURCES ------------------------------------------------------ -->
+    <section class="section-pad sources" id="sources">
+      <div class="section-heading"><p class="eyebrow">Sources & further reading</p><h2>Where the technical and historical claims come from.</h2><p>This site is an educational overview, not a claim that every factory uses an identical sequence.</p></div>
+      <ol class="source-list">
+        <li><a href="https://patents.google.com/patent/US111197A/en" target="_blank" rel="noopener">US Patent 111,197 (1871), Charles Goodyear Jr. — improvements in machines for sewing boots and shoes</a><span>Primary historical source describing machinery for stitching soles to welts.</span></li>
+        <li><a href="https://patents.google.com/patent/US96944A/en" target="_blank" rel="noopener">US Patent 96,944 (1869), Daniel Mills — improvement in sewing machines for boots and shoes</a><span>Primary historical source for a machine intended particularly to sew an outsole to a welt; assigned to Charles Goodyear Jr.</span></li>
+        <li><a href="https://patents.google.com/patent/US2898875A/en" target="_blank" rel="noopener">US Patent 2,898,875 (1959) — welt shoe sewing machines</a><span>Useful technical description of commercial Goodyear welt sewing machinery and its welt guide.</span></li>
+        <li><a href="https://patents.google.com/patent/US3341873A/en" target="_blank" rel="noopener">US Patent 3,341,873 (1967) — methods and machines for making Goodyear welt shoes</a><span>Shows a ribbed insole and describes the inseam joining upper to insole structure.</span></li>
+        <li><a href="https://goodyearweltedshoes.pt/history/" target="_blank" rel="noopener">Goodyear Welted Shoes — history of the welting machine</a><span>A detailed secondary account emphasising the collaborative patent history around Goodyear Jr., Auguste Destouy and Daniel Mills.</span></li>
+        <li><a href="https://myrqvist.com/blogs/journal/blake-stitch-vs-goodyear-welt" target="_blank" rel="noopener">Myrqvist — Blake stitch vs Goodyear welt</a><span>A contemporary maker’s comparison of construction, flexibility, weather resistance and repair.</span></li>
+      </ol>
+    </section>
+  </main>
+
+  <!-- 18A — FOOTER --------------------------------------------------------- -->
+  <footer class="site-footer">
+    <div><strong>Goodyear Welt</strong><p>An independent visual explainer built as a GitHub Pages project.</p></div>
+    <div><a href="https://github.com/pelld/GYW" target="_blank" rel="noopener">Source on GitHub</a><a href="#top">Back to top ↑</a></div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
