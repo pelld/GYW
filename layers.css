@@ -1,0 +1,128 @@
+/* 40A — REAL PHOTO LAYER SYSTEM ------------------------------------------- */
+#anatomy .section-heading p:last-child {
+  font-size: 0;
+}
+
+#anatomy .section-heading p:last-child::after {
+  content: "Tap a part name to isolate that component in the exploded shoe.";
+  display: block;
+  max-width: 680px;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.5;
+}
+
+#anatomy .anatomy-stage {
+  position: relative;
+  min-height: 0;
+  aspect-ratio: 320 / 333;
+  padding: 0;
+  overflow: hidden;
+  isolation: isolate;
+  background: #eee8df url("assets/gyw-anatomy.webp?v=20260815-1458") center / cover no-repeat;
+  border: 1px solid rgba(95, 65, 44, .22);
+  border-radius: 22px;
+  box-shadow: 0 18px 42px rgba(42, 28, 18, .14);
+}
+
+/* 40B — DIM THE WHOLE SHOE WHEN ONE COMPONENT IS SELECTED ---------------- */
+#anatomy .anatomy-stage::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: rgba(250, 246, 239, 0);
+  transition: background .2s ease;
+}
+
+#anatomy .anatomy-stage.is-filtered::before {
+  background: rgba(250, 246, 239, .76);
+}
+
+/* 40C — FULL-COLOUR COPY USED AS THE SELECTED PHOTO LAYER ---------------- */
+#anatomy .anatomy-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  background: url("assets/gyw-anatomy.webp?v=20260815-1458") center / cover no-repeat;
+  clip-path: inset(0 0 100% 0);
+  filter: saturate(1.06) contrast(1.03) drop-shadow(0 9px 10px rgba(46, 27, 16, .18));
+  transition: opacity .18s ease, clip-path .28s cubic-bezier(.2,.8,.2,1);
+}
+
+#anatomy .anatomy-stage.is-filtered::after {
+  opacity: 1;
+}
+
+/* 40D — EACH BUTTON NOW REVEALS A DIFFERENT PHOTOGRAPHIC LAYER ----------- */
+.anatomy-grid:has(.part-button[data-part="upper"].active) .anatomy-stage::after {
+  clip-path: inset(4% 0 69% 0);
+}
+
+.anatomy-grid:has(.part-button[data-part="insole"].active) .anatomy-stage::after {
+  clip-path: inset(28% 0 57% 0);
+}
+
+.anatomy-grid:has(.part-button[data-part="gemming"].active) .anatomy-stage::after {
+  clip-path: inset(39% 0 49% 0);
+}
+
+.anatomy-grid:has(.part-button[data-part="welt"].active) .anatomy-stage::after {
+  clip-path: inset(48% 0 39% 0);
+}
+
+.anatomy-grid:has(.part-button[data-part="filler"].active) .anatomy-stage::after {
+  clip-path: inset(57% 0 30% 0);
+}
+
+.anatomy-grid:has(.part-button[data-part="shank"].active) .anatomy-stage::after {
+  clip-path: inset(65% 0 22% 0);
+}
+
+.anatomy-grid:has(.part-button[data-part="outsole"].active) .anatomy-stage::after {
+  clip-path: inset(72% 0 9% 0);
+}
+
+.anatomy-grid:has(.part-button[data-part="heel"].active) .anatomy-stage::after {
+  clip-path: inset(78% 50% 2% 0);
+}
+
+/* 40E — OLD SVG REMAINS ONLY AS THE TAP TARGET MAP ------------------------ */
+#anatomy .anatomy-stage svg {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  opacity: .001;
+  filter: none;
+}
+
+#anatomy .anatomy-stage .anatomy-layer,
+#anatomy .anatomy-stage.is-filtered .anatomy-layer,
+#anatomy .anatomy-stage.is-filtered .anatomy-layer.is-selected {
+  opacity: 1;
+  fill: #000;
+  stroke: #000;
+  transform: none;
+  filter: none;
+  pointer-events: all;
+}
+
+/* 40F — MOBILE ------------------------------------------------------------ */
+@media (max-width: 760px) {
+  #anatomy .section-heading p:last-child::after {
+    font-size: .93rem;
+  }
+
+  #anatomy .anatomy-stage {
+    width: 100%;
+    padding: 0;
+    border-radius: 18px;
+  }
+}
