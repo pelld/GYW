@@ -1,4 +1,10 @@
-// 20A — MOBILE NAVIGATION --------------------------------------------------
+// 20A — VISUAL POLISH STYLESHEET ------------------------------------------
+const polishSheet = document.createElement('link');
+polishSheet.rel = 'stylesheet';
+polishSheet.href = 'polish.css';
+document.head.appendChild(polishSheet);
+
+// 20B — MOBILE NAVIGATION --------------------------------------------------
 const navToggle = document.querySelector('.nav-toggle');
 const siteNav = document.querySelector('.site-nav');
 
@@ -12,7 +18,7 @@ siteNav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', 
   navToggle?.setAttribute('aria-expanded', 'false');
 }));
 
-// 20B — INTERACTIVE ANATOMY ------------------------------------------------
+// 20C — INTERACTIVE ANATOMY ------------------------------------------------
 const anatomyStage = document.querySelector('#anatomy-stage');
 const partButtons = [...document.querySelectorAll('.part-button')];
 const anatomyLayers = [...document.querySelectorAll('.anatomy-layer')];
@@ -30,7 +36,7 @@ anatomyLayers.forEach((layer) => {
   layer.addEventListener('click', () => showPart(layer.dataset.part));
 });
 
-// 20C — PROCESS SCROLL PROGRESS -------------------------------------------
+// 20D — PROCESS SCROLL PROGRESS -------------------------------------------
 const processShell = document.querySelector('.process-shell');
 const processFill = document.querySelector('#process-progress-fill');
 
@@ -48,7 +54,7 @@ window.addEventListener('scroll', updateProcessProgress, { passive: true });
 window.addEventListener('resize', updateProcessProgress);
 updateProcessProgress();
 
-// 20D — CONSTRUCTION COMPARISON DATA --------------------------------------
+// 20E — CONSTRUCTION COMPARISON DATA --------------------------------------
 const compareData = {
   blake: {
     title: 'Goodyear welt vs Blake stitch',
@@ -93,7 +99,7 @@ function renderCompare(key) {
 compareTabs.forEach((tab) => tab.addEventListener('click', () => renderCompare(tab.dataset.compare)));
 renderCompare('blake');
 
-// 20E — GLOSSARY FILTER ----------------------------------------------------
+// 20F — GLOSSARY FILTER ----------------------------------------------------
 const glossarySearch = document.querySelector('#glossary-search');
 const glossaryEntries = [...document.querySelectorAll('#glossary-list > div')];
 
@@ -102,7 +108,7 @@ glossarySearch?.addEventListener('input', () => {
   glossaryEntries.forEach((entry) => entry.classList.toggle('is-hidden', query && !entry.textContent.toLowerCase().includes(query)));
 });
 
-// 20F — MINI QUIZ ----------------------------------------------------------
+// 20G — MINI QUIZ ----------------------------------------------------------
 const quizQuestions = [
   {
     q: 'What is the welt’s main structural role?',
