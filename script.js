@@ -12,49 +12,76 @@ siteNav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', 
   navToggle?.setAttribute('aria-expanded', 'false');
 }));
 
-// 20B — INTERACTIVE PHOTO LAYERS ------------------------------------------
+// 20B — INTERACTIVE PHOTOGRAPHIC ANATOMY ----------------------------------
 const anatomyStage = document.querySelector('#anatomy-stage');
 const partButtons = [...document.querySelectorAll('.part-button')];
-const anatomyMasterImage = 'assets/layers/whole-system.webp?v=20260815-1748';
 
-const anatomyCrops = {
-  upper:   { x: 0,  y: 0,   w: 420, h: 155 },
-  insole:  { x: 0,  y: 118, w: 420, h: 88 },
-  gemming: { x: 0,  y: 158, w: 420, h: 74 },
-  welt:    { x: 0,  y: 194, w: 420, h: 72 },
-  filler:  { x: 0,  y: 228, w: 420, h: 74 },
-  shank:   { x: 70, y: 268, w: 280, h: 70 },
-  outsole: { x: 0,  y: 292, w: 420, h: 76 },
-  heel:    { x: 0,  y: 310, w: 190, h: 81 }
-};
+const anatomyParts = [
+  'upper',
+  'insole',
+  'gemming',
+  'welt',
+  'filler',
+  'shank',
+  'outsole',
+  'heel'
+];
 
-function anatomyMarkup(part) {
-  if (part === 'all') {
-    return `<img class="anatomy-photo is-visible" src="${anatomyMasterImage}" alt="Exploded Goodyear welt shoe showing all construction layers">`;
-  }
+if (anatomyStage) {
+  anatomyStage.querySelectorAll('.photo-layer, .anatomy-current-label').forEach((node) => node.remove());
 
-  const crop = anatomyCrops[part];
-  if (!crop) return '';
+  anatomyParts.forEach((part) => {
+    const layer = document.createElement('div');
+    layer.className = `photo-layer photo-layer--${part}`;
+    layer.dataset.part = part;
+    layer.setAttribute('role', 'button');
+    layer.setAttribute('aria-label', `Show ${part}`);
+    layer.tabIndex = 0;
+    anatomyStage.appendChild(layer);
+  });
 
-  return `
-    <svg class="anatomy-photo anatomy-photo--crop is-visible" viewBox="${crop.x} ${crop.y} ${crop.w} ${crop.h}" role="img" aria-label="${part} component of a Goodyear welt shoe">
-      <image href="${anatomyMasterImage}" x="0" y="0" width="420" height="391" preserveAspectRatio="none"></image>
-    </svg>`;
+  const label = document.createElement('div');
+  label.className = 'anatomy-current-label';
+  label.textContent = 'Whole system';
+  anatomyStage.appendChild(label);
 }
+
+const photoLayers = [...document.querySelectorAll('#anatomy-stage .photo-layer')];
+const anatomyLabel = document.querySelector('#anatomy-stage .anatomy-current-label');
 
 function showPart(part) {
-  if (!anatomyStage) return;
+  const showAll = part === 'all';
 
-  partButtons.forEach((button) => button.classList.toggle('active', button.dataset.part === part));
-  const activeButton = partButtons.find((button) => button.dataset.part === part);
-  const label = activeButton?.querySelector('strong')?.textContent || 'Whole system';
+  partButtons.forEach((button) => {
+    button.classList.toggle('active', button.dataset.part === part);
+  });
 
-  anatomyStage.innerHTML = `
-    <div class="anatomy-photo-stack">${anatomyMarkup(part)}</div>
-    <div class="anatomy-view-label">${label}</div>`;
+  anatomyStage?.classList.toggle('is-filtered', !showAll);
+
+  photoLayers.forEach((layer) => {
+    layer.classList.toggle('is-active', !showAll && layer.dataset.part === part);
+  });
+
+  if (anatomyLabel) {
+    const activeButton = partButtons.find((button) => button.dataset.part === part);
+    anatomyLabel.textContent = activeButton?.querySelector('strong')?.textContent || 'Whole system';
+  }
 }
 
-partButtons.forEach((button) => button.addEventListener('click', () => showPart(button.dataset.part)));
+partButtons.forEach((button) => {
+  button.addEventListener('click', () => showPart(button.dataset.part));
+});
+
+photoLayers.forEach((layer) => {
+  layer.addEventListener('click', () => showPart(layer.dataset.part));
+  layer.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      showPart(layer.dataset.part);
+    }
+  });
+});
+
 showPart('all');
 
 // 20C — PROCESS SCROLL PROGRESS -------------------------------------------
