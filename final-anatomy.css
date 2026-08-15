@@ -1,0 +1,147 @@
+/* 60A — FINAL ANATOMY STAGE ---------------------------------------------- */
+#anatomy .anatomy-stage {
+  position: relative;
+  min-height: 0;
+  aspect-ratio: 320 / 333;
+  padding: 0;
+  overflow: hidden;
+  background-color: #eee8df;
+  background-image: url("assets/gyw-anatomy.webp?v=20260815-1743");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  border: 1px solid rgba(95, 65, 44, .22);
+  border-radius: 22px;
+  box-shadow: 0 18px 42px rgba(42, 28, 18, .14);
+}
+
+#anatomy .anatomy-stage::before {
+  content: "REALISTIC EXPLODED VIEW";
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  z-index: 8;
+  padding: 5px 8px;
+  color: #5f4a39;
+  background: rgba(255, 250, 243, .9);
+  border: 1px solid rgba(81, 56, 38, .14);
+  border-radius: 999px;
+  font-size: .58rem;
+  font-weight: 850;
+  letter-spacing: .13em;
+}
+
+#anatomy .anatomy-stage::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  background: rgba(248, 243, 234, 0);
+  transition: background .18s ease;
+}
+
+#anatomy .anatomy-stage.is-filtered::after {
+  background: rgba(248, 243, 234, .72);
+}
+
+/* 60B — TRUE PHOTOGRAPHIC LAYERS ---------------------------------------- */
+#anatomy .photo-layer {
+  position: absolute;
+  inset: 0;
+  z-index: 4;
+  opacity: 0;
+  background-image: url("assets/gyw-anatomy.webp?v=20260815-1743");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  transition: opacity .18s ease, filter .18s ease;
+  cursor: pointer;
+}
+
+#anatomy .photo-layer.is-active {
+  opacity: 1;
+  filter: saturate(1.05) contrast(1.03);
+}
+
+#anatomy .photo-layer--upper {
+  clip-path: polygon(5% 6%, 96% 6%, 96% 31%, 5% 31%);
+}
+
+#anatomy .photo-layer--insole {
+  clip-path: polygon(5% 29%, 96% 29%, 96% 41%, 5% 41%);
+}
+
+#anatomy .photo-layer--gemming {
+  clip-path: polygon(5% 39%, 96% 39%, 96% 49%, 5% 49%);
+}
+
+#anatomy .photo-layer--welt {
+  clip-path: polygon(5% 47%, 96% 47%, 96% 58%, 5% 58%);
+}
+
+#anatomy .photo-layer--filler {
+  clip-path: polygon(5% 56%, 96% 56%, 96% 68%, 5% 68%);
+}
+
+#anatomy .photo-layer--shank {
+  clip-path: polygon(30% 66%, 83% 66%, 83% 76%, 30% 76%);
+}
+
+#anatomy .photo-layer--outsole {
+  clip-path: polygon(5% 74%, 96% 74%, 96% 87%, 5% 87%);
+}
+
+#anatomy .photo-layer--heel {
+  clip-path: polygon(5% 76%, 38% 76%, 38% 96%, 5% 96%);
+}
+
+/* 60C — REMOVE ALL PREVIOUS EXPERIMENTS --------------------------------- */
+#anatomy .anatomy-photo-stack,
+#anatomy .anatomy-photo,
+#anatomy .anatomy-view-label,
+#anatomy .photo-focus,
+#anatomy .focus-overlay,
+#anatomy .selection-overlay,
+#anatomy .spotlight,
+#anatomy .spotlight-mask,
+#anatomy .anatomy-hint,
+#anatomy .anatomy-stage > svg {
+  display: none !important;
+}
+
+/* 60D — CURRENT PART LABEL ----------------------------------------------- */
+#anatomy .anatomy-current-label {
+  position: absolute;
+  left: 12px;
+  bottom: 12px;
+  z-index: 9;
+  padding: 7px 11px;
+  color: #513923;
+  background: rgba(255, 250, 243, .94);
+  border: 1px solid rgba(81, 56, 38, .14);
+  border-radius: 999px;
+  font-size: .72rem;
+  font-weight: 800;
+  box-shadow: 0 5px 14px rgba(42, 28, 18, .08);
+}
+
+/* 60E — MOBILE ----------------------------------------------------------- */
+@media (max-width: 760px) {
+  #anatomy .anatomy-stage {
+    width: 100%;
+    border-radius: 18px;
+  }
+
+  #anatomy .anatomy-stage::before {
+    top: 10px;
+    left: 10px;
+    font-size: .51rem;
+  }
+
+  #anatomy .anatomy-current-label {
+    left: 9px;
+    bottom: 9px;
+    font-size: .66rem;
+  }
+}
