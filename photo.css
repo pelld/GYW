@@ -12,7 +12,7 @@
   line-height: 1.5;
 }
 
-.anatomy-stage {
+#anatomy .anatomy-stage {
   position: relative;
   min-height: 0;
   aspect-ratio: 320 / 333;
@@ -28,7 +28,7 @@
   box-shadow: 0 18px 42px rgba(42, 28, 18, .14);
 }
 
-.anatomy-stage::before {
+#anatomy .anatomy-stage::before {
   content: "REALISTIC EXPLODED VIEW";
   position: absolute;
   top: 14px;
@@ -45,7 +45,7 @@
   backdrop-filter: blur(8px);
 }
 
-.anatomy-stage::after {
+#anatomy .anatomy-stage::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -58,7 +58,7 @@
 }
 
 /* 40B — KEEP THE EXISTING SVG ONLY AS AN INVISIBLE CLICK MAP -------------- */
-.anatomy-stage svg {
+#anatomy .anatomy-stage svg {
   position: absolute;
   inset: 0;
   z-index: 4;
@@ -69,50 +69,50 @@
   filter: none;
 }
 
-.anatomy-stage .anatomy-layer {
+#anatomy .anatomy-stage .anatomy-layer {
   fill: #000;
   stroke: #000;
   opacity: 1;
   pointer-events: all;
 }
 
-.anatomy-stage.is-filtered .anatomy-layer,
-.anatomy-stage.is-filtered .anatomy-layer.is-selected {
+#anatomy .anatomy-stage.is-filtered .anatomy-layer,
+#anatomy .anatomy-stage.is-filtered .anatomy-layer.is-selected {
   opacity: 1;
   transform: none;
   filter: none;
 }
 
 /* 40C — VISUAL FOCUS FOR EACH SELECTED COMPONENT ------------------------- */
-.anatomy-grid:has(.part-button[data-part="upper"].active) .anatomy-stage::after {
+#anatomy .anatomy-grid:has(.part-button[data-part="upper"].active) .anatomy-stage::after {
   background: radial-gradient(ellipse 58% 24% at 57% 19%, transparent 0 58%, rgba(245,239,231,.78) 88%);
 }
 
-.anatomy-grid:has(.part-button[data-part="insole"].active) .anatomy-stage::after {
+#anatomy .anatomy-grid:has(.part-button[data-part="insole"].active) .anatomy-stage::after {
   background: radial-gradient(ellipse 62% 13% at 57% 36%, transparent 0 54%, rgba(245,239,231,.80) 88%);
 }
 
-.anatomy-grid:has(.part-button[data-part="gemming"].active) .anatomy-stage::after {
+#anatomy .anatomy-grid:has(.part-button[data-part="gemming"].active) .anatomy-stage::after {
   background: radial-gradient(ellipse 62% 11% at 57% 46%, transparent 0 50%, rgba(245,239,231,.82) 86%);
 }
 
-.anatomy-grid:has(.part-button[data-part="welt"].active) .anatomy-stage::after {
+#anatomy .anatomy-grid:has(.part-button[data-part="welt"].active) .anatomy-stage::after {
   background: radial-gradient(ellipse 65% 10% at 56% 55%, transparent 0 50%, rgba(245,239,231,.82) 87%);
 }
 
-.anatomy-grid:has(.part-button[data-part="filler"].active) .anatomy-stage::after {
+#anatomy .anatomy-grid:has(.part-button[data-part="filler"].active) .anatomy-stage::after {
   background: radial-gradient(ellipse 50% 10% at 48% 65%, transparent 0 50%, rgba(245,239,231,.84) 88%);
 }
 
-.anatomy-grid:has(.part-button[data-part="shank"].active) .anatomy-stage::after {
+#anatomy .anatomy-grid:has(.part-button[data-part="shank"].active) .anatomy-stage::after {
   background: radial-gradient(ellipse 48% 9% at 52% 73%, transparent 0 48%, rgba(245,239,231,.84) 88%);
 }
 
-.anatomy-grid:has(.part-button[data-part="outsole"].active) .anatomy-stage::after {
+#anatomy .anatomy-grid:has(.part-button[data-part="outsole"].active) .anatomy-stage::after {
   background: radial-gradient(ellipse 67% 12% at 57% 82%, transparent 0 52%, rgba(245,239,231,.82) 88%);
 }
 
-.anatomy-grid:has(.part-button[data-part="heel"].active) .anatomy-stage::after {
+#anatomy .anatomy-grid:has(.part-button[data-part="heel"].active) .anatomy-stage::after {
   background: radial-gradient(ellipse 29% 17% at 30% 88%, transparent 0 52%, rgba(245,239,231,.84) 88%);
 }
 
@@ -122,13 +122,13 @@
     font-size: .93rem;
   }
 
-  .anatomy-stage {
+  #anatomy .anatomy-stage {
     width: 100%;
     border-radius: 18px;
     background-size: cover;
   }
 
-  .anatomy-stage::before {
+  #anatomy .anatomy-stage::before {
     top: 10px;
     left: 10px;
     font-size: .51rem;
