@@ -1,24 +1,109 @@
 /* 90A — STATIC LABELLED ANATOMY ------------------------------------------- */
-#anatomy .section-heading .eyebrow { font-size: 0; }
-#anatomy .section-heading .eyebrow::after { content: "Anatomy"; font-size: .72rem; }
-#anatomy .section-heading p:last-child { max-width: 680px; font-size: 0 !important; }
-#anatomy .section-heading p:last-child::after { content: "All of the major components are shown together in one labelled exploded view."; display: block; color: var(--muted); font-size: 1rem; line-height: 1.55; }
+#anatomy .section-heading .eyebrow {
+  font-size: 0;
+}
+
+#anatomy .section-heading .eyebrow::after {
+  content: "Anatomy";
+  font-size: .72rem;
+}
+
+#anatomy .section-heading p:last-child {
+  max-width: 680px;
+  font-size: 0 !important;
+}
+
+#anatomy .section-heading p:last-child::after {
+  content: "All of the major components are shown together in one labelled exploded view.";
+  display: block;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.55;
+}
 
 /* 90B — ONE RELIABLE WEBP IMAGE, NO LAYER CONTROLS ----------------------- */
-#anatomy .anatomy-grid { display: block; max-width: 900px; margin-inline: auto; }
-#anatomy .anatomy-stage { position: relative; display: block; width: 100%; min-height: 0; aspect-ratio: 1 / 1; padding: 0; overflow: hidden; background: #fbf7ef url("assets/labelled-anatomy.webp?v=20260815-2109") center / contain no-repeat !important; border: 1px solid rgba(95,65,44,.18); border-radius: 22px; box-shadow: 0 18px 42px rgba(42,28,18,.11); }
-#anatomy .anatomy-stage::before, #anatomy .anatomy-stage::after { content: none !important; display: none !important; }
-#anatomy .anatomy-controls, #anatomy .anatomy-stage > svg, #anatomy .anatomy-hint, #anatomy .anatomy-static-image, #anatomy .anatomy-photo-base, #anatomy .anatomy-photo-overlay, #anatomy .photo-layer, #anatomy .photo-focus, #anatomy .focus-overlay, #anatomy .selection-overlay, #anatomy .spotlight, #anatomy .spotlight-mask, #anatomy .anatomy-current-label { display: none !important; }
+#anatomy .anatomy-grid {
+  display: block;
+  max-width: 900px;
+  margin-inline: auto;
+}
 
-/* 90C — STITCH IMAGES: REAL FILES ONLY ----------------------------------- */
-.stitch-illustration { position: relative !important; display: block !important; width: 100% !important; height: auto !important; min-height: 0 !important; overflow: hidden !important; border-radius: 18px !important; background-color: #eee3d4 !important; background-position: center !important; background-repeat: no-repeat !important; background-size: cover !important; }
-.stitch-illustration > span, .stitch-illustration > img { display: none !important; }
-.inseam-illustration { aspect-ratio: 512 / 425 !important; background-image: url("assets/hd/inseam-hd.webp?v=20260815-2109") !important; }
-.outsole-illustration { aspect-ratio: 512 / 390 !important; background-image: url("assets/hd/outsole-hd.webp?v=20260815-2109") !important; }
+#anatomy .anatomy-stage {
+  position: relative;
+  display: block;
+  width: 100%;
+  min-height: 0;
+  aspect-ratio: 1 / 1;
+  padding: 0;
+  overflow: hidden;
+  background: #fbf7ef url("assets/labelled-anatomy.webp?v=20260815-1958") center / contain no-repeat !important;
+  border: 1px solid rgba(95, 65, 44, .18);
+  border-radius: 22px;
+  box-shadow: 0 18px 42px rgba(42, 28, 18, .11);
+}
 
-/* 90D — MOBILE ------------------------------------------------------------ */
+#anatomy .anatomy-stage::before,
+#anatomy .anatomy-stage::after {
+  content: none !important;
+  display: none !important;
+}
+
+#anatomy .anatomy-controls,
+#anatomy .anatomy-stage > svg,
+#anatomy .anatomy-hint,
+#anatomy .anatomy-static-image,
+#anatomy .anatomy-photo-base,
+#anatomy .anatomy-photo-overlay,
+#anatomy .photo-layer,
+#anatomy .photo-focus,
+#anatomy .focus-overlay,
+#anatomy .selection-overlay,
+#anatomy .spotlight,
+#anatomy .spotlight-mask,
+#anatomy .anatomy-current-label {
+  display: none !important;
+}
+
+/* 90C — MOBILE ------------------------------------------------------------ */
 @media (max-width: 760px) {
-  #anatomy .section-heading p:last-child::after { font-size: .92rem; }
-  #anatomy .anatomy-stage, .stitch-illustration { border-radius: 18px; }
-  #anatomy .anatomy-stage { box-shadow: 0 12px 30px rgba(42,28,18,.09); }
+  #anatomy .section-heading p:last-child::after {
+    font-size: .92rem;
+  }
+
+  #anatomy .anatomy-stage {
+    border-radius: 18px;
+    box-shadow: 0 12px 30px rgba(42, 28, 18, .09);
+  }
+}
+
+/* 90D — HD SEAM CUTAWAYS ------------------------------------------------- */
+.inseam-illustration,
+.outsole-illustration {
+  position: relative !important;
+  display: block !important;
+  width: 100% !important;
+  height: auto !important;
+  min-height: 0 !important;
+  aspect-ratio: 4 / 3 !important;
+  overflow: hidden !important;
+  border-radius: 18px !important;
+  background-color: #eee3d4 !important;
+  background-position: center !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+}
+
+.inseam-illustration {
+  background-image: url("assets/hd/inseam-hd.webp?v=20260815-2131") !important;
+}
+
+.outsole-illustration {
+  background-image: url("assets/hd/outsole-hd.webp?v=20260815-2131") !important;
+}
+
+.inseam-illustration > span,
+.inseam-illustration > img,
+.outsole-illustration > span,
+.outsole-illustration > img {
+  display: none !important;
 }
