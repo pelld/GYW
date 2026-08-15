@@ -15,29 +15,37 @@ siteNav?.querySelectorAll('a').forEach((link) => link.addEventListener('click', 
 // 20B — INTERACTIVE PHOTOGRAPHIC ANATOMY ----------------------------------
 const anatomyStage = document.querySelector('#anatomy-stage');
 const partButtons = [...document.querySelectorAll('.part-button')];
+const anatomyParts = ['upper', 'insole', 'gemming', 'welt', 'filler', 'shank', 'outsole', 'heel'];
+const anatomyPrimaryImage = 'assets/gyw-anatomy.webp?v=20260815-1750';
+const anatomyFallbackImage = 'assets/layers/whole-system.webp?v=20260815-1750';
 
-const anatomyParts = [
-  'upper',
-  'insole',
-  'gemming',
-  'welt',
-  'filler',
-  'shank',
-  'outsole',
-  'heel'
-];
+function setAnatomyImageSource(image) {
+  image.onerror = () => {
+    image.onerror = null;
+    image.src = anatomyFallbackImage;
+  };
+  image.src = anatomyPrimaryImage;
+}
 
 if (anatomyStage) {
-  anatomyStage.querySelectorAll('.photo-layer, .anatomy-current-label').forEach((node) => node.remove());
+  anatomyStage.querySelectorAll('.anatomy-photo-base, .anatomy-photo-overlay, .photo-layer, .anatomy-current-label').forEach((node) => node.remove());
+
+  const baseImage = document.createElement('img');
+  baseImage.className = 'anatomy-photo-base';
+  baseImage.alt = 'Exploded Goodyear welt shoe showing the upper, insole, gemming, welt, filler, shank, outsole and heel';
+  baseImage.decoding = 'async';
+  setAnatomyImageSource(baseImage);
+  anatomyStage.appendChild(baseImage);
 
   anatomyParts.forEach((part) => {
-    const layer = document.createElement('div');
-    layer.className = `photo-layer photo-layer--${part}`;
-    layer.dataset.part = part;
-    layer.setAttribute('role', 'button');
-    layer.setAttribute('aria-label', `Show ${part}`);
-    layer.tabIndex = 0;
-    anatomyStage.appendChild(layer);
+    const layerImage = document.createElement('img');
+    layerImage.className = `anatomy-photo-overlay anatomy-photo-overlay--${part}`;
+    layerImage.dataset.part = part;
+    layerImage.alt = '';
+    layerImage.decoding = 'async';
+    layerImage.setAttribute('aria-hidden', 'true');
+    setAnatomyImageSource(layerImage);
+    anatomyStage.appendChild(layerImage);
   });
 
   const label = document.createElement('div');
@@ -46,7 +54,8 @@ if (anatomyStage) {
   anatomyStage.appendChild(label);
 }
 
-const photoLayers = [...document.querySelectorAll('#anatomy-stage .photo-layer')];
+const anatomyBaseImage = document.querySelector('#anatomy-stage .anatomy-photo-base');
+const anatomyPhotoLayers = [...document.querySelectorAll('#anatomy-stage .anatomy-photo-overlay')];
 const anatomyLabel = document.querySelector('#anatomy-stage .anatomy-current-label');
 
 function showPart(part) {
@@ -58,9 +67,15 @@ function showPart(part) {
 
   anatomyStage?.classList.toggle('is-filtered', !showAll);
 
-  photoLayers.forEach((layer) => {
+  anatomyPhotoLayers.forEach((layer) => {
     layer.classList.toggle('is-active', !showAll && layer.dataset.part === part);
   });
+
+  if (anatomyBaseImage) {
+    anatomyBaseImage.alt = showAll
+      ? 'Exploded Goodyear welt shoe showing all construction layers'
+      : `Exploded Goodyear welt shoe with the ${part} highlighted`;
+  }
 
   if (anatomyLabel) {
     const activeButton = partButtons.find((button) => button.dataset.part === part);
@@ -70,16 +85,6 @@ function showPart(part) {
 
 partButtons.forEach((button) => {
   button.addEventListener('click', () => showPart(button.dataset.part));
-});
-
-photoLayers.forEach((layer) => {
-  layer.addEventListener('click', () => showPart(layer.dataset.part));
-  layer.addEventListener('keydown', (event) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      showPart(layer.dataset.part);
-    }
-  });
 });
 
 showPart('all');
@@ -202,6 +207,7 @@ function renderQuiz() {
     document.querySelector('#quiz-restart')?.addEventListener('click', () => { quizIndex = 0; quizScore = 0; renderQuiz(); });
     return;
   }
+
   quizLocked = false;
   const item = quizQuestions[quizIndex];
   quizBox.innerHTML = `<p class="quiz-progress">Question ${quizIndex + 1} of ${quizQuestions.length}</p><h3 class="quiz-question">${item.q}</h3><div class="quiz-options">${item.options.map((option, i) => `<button class="quiz-option" data-index="${i}" type="button">${option}</button>`).join('')}</div><p class="quiz-explanation" hidden></p><button class="quiz-next" type="button" hidden>Next question</button>`;
@@ -213,14 +219,17 @@ function answerQuiz(choice) {
   quizLocked = true;
   const item = quizQuestions[quizIndex];
   if (choice === item.answer) quizScore += 1;
+
   quizBox.querySelectorAll('.quiz-option').forEach((button, index) => {
     if (index === item.answer) button.classList.add('correct');
     else if (index === choice) button.classList.add('wrong');
     button.disabled = true;
   });
+
   const explanation = quizBox.querySelector('.quiz-explanation');
   explanation.hidden = false;
   explanation.textContent = item.why;
+
   const next = quizBox.querySelector('.quiz-next');
   next.hidden = false;
   next.addEventListener('click', () => { quizIndex += 1; renderQuiz(); }, { once: true });
